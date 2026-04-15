@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partners & Integrations | Incode — Version B</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#006AFF;--bl:rgba(0,106,255,.1);--bm:rgba(0,106,255,.18);--ink:#111;--soft:#444;--muted:#777;--w:#fff;--surf:#F6F6F8;--bdr:#E6E6E6;--rb:7.86px;--rc:14px;--rt:20px;--f:'Rethink Sans',sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--f);background:var(--w);color:var(--ink);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+.nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--bdr);height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;}
+.nav-logo{font-size:19px;font-weight:700;letter-spacing:-.3px;color:var(--ink);text-decoration:none;}
+.nav-right{display:flex;align-items:center;gap:10px;}
+.version-badge{font-size:11px;font-weight:600;padding:4px 10px;border-radius:var(--rt);background:#DCFCE7;color:#166534;border:1px solid #86EFAC;}
+.nav-btn{display:inline-flex;align-items:center;gap:7px;padding:9px 20px;background:var(--blue);color:#fff;border:none;border-radius:var(--rb);font-size:14px;font-weight:500;cursor:pointer;font-family:var(--f);}
+.nav-btn:hover{opacity:.88;}
+/* HERO */
+.hero{background:linear-gradient(160deg,#000 0%,#001433 45%,#0030A0 75%,#006AFF 100%);padding:100px 48px 0;position:relative;overflow:hidden;}
+.hero-noise{position:absolute;inset:0;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");pointer-events:none;}
+.hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1;}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;background:var(--bm);border:1px solid rgba(0,106,255,.3);color:#80B8FF;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:5px 13px;border-radius:var(--rt);margin-bottom:26px;}
+.hero h1{font-size:clamp(36px,5vw,58px);font-weight:700;letter-spacing:-1.6px;line-height:1.08;color:#eee;margin-bottom:18px;max-width:700px;}
+.hero h1 em{color:var(--blue);font-style:normal;}
+.hero-sub{font-size:16px;line-height:1.75;color:rgba(238,238,238,.6);max-width:520px;margin-bottom:48px;}
+.logo-strip{display:flex;align-items:stretch;border-top:1px solid rgba(255,255,255,.1);}
+.li{flex:1;padding:22px 0;display:flex;align-items:center;justify-content:center;border-right:1px solid rgba(255,255,255,.08);}
+.li:last-child{border-right:none;}
+.li img{height:18px;object-fit:contain;filter:brightness(0) invert(1);opacity:.4;transition:opacity .2s;}
+.li:hover img{opacity:.75;}
+/* SECTION NAV */
+.snav-wrap{background:#000;border-bottom:1px solid #222;position:sticky;top:68px;z-index:100;padding:0 48px;}
+.snav{max-width:1100px;margin:0 auto;display:flex;overflow-x:auto;}
+.stab{padding:16px 20px;font-size:13px;font-weight:500;color:#777;cursor:pointer;border:none;background:transparent;border-bottom:2px solid transparent;white-space:nowrap;transition:color .2s,border-color .2s;font-family:var(--f);}
+.stab:hover{color:#eee;}
+.stab.active{color:#eee;border-bottom-color:var(--blue);}
+/* CONTENT */
+.wrap{max-width:1100px;margin:0 auto;padding:0 48px;}
+.sec{padding:68px 0;}
+.sec+.sec{border-top:1px solid var(--bdr);}
+.sec-ey{display:inline-block;background:var(--bl);color:var(--blue);font-size:12px;font-weight:600;padding:4px 11px;border-radius:var(--rt);margin-bottom:12px;}
+.sec-title{font-size:26px;font-weight:700;letter-spacing:-.6px;color:var(--ink);margin-bottom:8px;}
+.sec-body{font-size:14px;color:var(--soft);max-width:580px;line-height:1.75;margin-bottom:32px;}
+.sub{font-size:11px;font-weight:700;letter-spacing:.9px;text-transform:uppercase;color:var(--muted);padding-bottom:12px;border-bottom:1px solid var(--bdr);margin-bottom:16px;margin-top:32px;}
+.sub:first-of-type{margin-top:0;}
+/* LARGE INTEGRATION CARDS */
+.icards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.icard{background:var(--w);border:1.5px solid var(--bdr);border-radius:var(--rc);padding:24px;display:flex;gap:18px;align-items:flex-start;transition:border-color .18s,box-shadow .18s;}
+.icard:hover{border-color:rgba(0,106,255,.3);box-shadow:0 4px 16px rgba(0,106,255,.07);}
+.icard-icon{width:40px;height:40px;border-radius:9px;background:var(--surf);border:1px solid var(--bdr);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.icard-icon img{width:22px;height:22px;object-fit:contain;}
+.icard-icon span{font-size:10px;font-weight:700;color:var(--muted);text-align:center;line-height:1.2;}
+.icard-top{display:flex;align-items:center;gap:8px;margin-bottom:5px;}
+.icard-name{font-size:14px;font-weight:700;color:var(--ink);}
+.status-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.live{background:#22C55E;}
+.wip{background:#F59E0B;}
+.icard-desc{font-size:13px;color:var(--soft);line-height:1.6;margin-bottom:10px;}
+.uc-row{display:flex;gap:5px;flex-wrap:wrap;}
+.uc{font-size:11px;font-weight:500;color:var(--blue);background:var(--bl);border:1px solid rgba(0,106,255,.15);border-radius:var(--rt);padding:2px 8px;}
+/* OEM CARDS — distinct visual treatment */
+.oem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.oem-card{background:var(--surf);border:1.5px solid var(--bdr);border-radius:var(--rc);padding:22px;display:flex;flex-direction:column;transition:border-color .18s,box-shadow .18s;}
+.oem-card:hover{border-color:rgba(0,106,255,.28);box-shadow:0 4px 14px rgba(0,106,255,.06);}
+.oem-logo{height:28px;margin-bottom:12px;display:flex;align-items:center;}
+.oem-logo img{max-height:22px;max-width:100px;object-fit:contain;object-position:left;}
+.lf{font-size:13px;font-weight:700;color:var(--ink);}
+.oem-name{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:5px;}
+.oem-desc{font-size:12px;color:var(--soft);line-height:1.6;flex:1;margin-bottom:12px;}
+.tags{display:flex;gap:4px;flex-wrap:wrap;}
+.tag{padding:2px 8px;border-radius:var(--rt);font-size:11px;font-weight:500;white-space:nowrap;background:var(--w);color:var(--muted);border:1px solid var(--bdr);}
+.tag.grn{background:#EDFAF3;color:#1A6B3C;border-color:rgba(26,107,60,.18);}
+.tag.amb{background:#FFFBEB;color:#92400E;border-color:rgba(245,158,11,.25);}
+/* SMALL CARDS */
+.scards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.scard{background:var(--w);border:1.5px solid var(--bdr);border-radius:var(--rc);padding:22px;display:flex;flex-direction:column;transition:border-color .18s,box-shadow .18s;}
+.scard:hover{border-color:rgba(0,106,255,.28);box-shadow:0 4px 14px rgba(0,106,255,.06);}
+.scard-logo{height:30px;margin-bottom:12px;display:flex;align-items:center;}
+.scard-logo img{max-height:22px;max-width:100px;object-fit:contain;object-position:left;}
+.scard-name{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:5px;}
+.scard-desc{font-size:12px;color:var(--soft);line-height:1.6;flex:1;margin-bottom:12px;}
+.tag.pur{background:#F2EEFF;color:#5B21B6;border-color:rgba(91,33,182,.18);}
+/* APPLY */
+.apply{border:1.5px dashed var(--bdr);border-radius:var(--rc);padding:22px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;min-height:150px;}
+.apply p{font-size:12px;color:var(--muted);line-height:1.5;}
+.apply-btn{padding:7px 16px;border-radius:var(--rb);font-size:12px;font-weight:600;border:1.5px solid var(--bdr);background:var(--w);color:var(--soft);cursor:pointer;font-family:var(--f);transition:border-color .15s,color .15s;}
+.apply-btn:hover{border-color:var(--blue);color:var(--blue);}
+/* COMING SOON */
+.cs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+.cs-item{background:var(--surf);border:1px solid var(--bdr);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:10px;}
+.cs-item img{width:20px;height:20px;object-fit:contain;opacity:.5;}
+.cs-item span{font-size:12px;font-weight:500;color:var(--muted);}
+/* OEM CONTEXT CALLOUT */
+.callout{background:#FFFBEB;border:1px solid #FCD34D;border-radius:10px;padding:16px 20px;margin-bottom:24px;display:flex;gap:12px;align-items:flex-start;}
+.callout-icon{font-size:16px;flex-shrink:0;margin-top:1px;}
+.callout-text{font-size:13px;color:#78350F;line-height:1.6;}
+/* CTA */
+.cta{background:var(--surf);border-top:1px solid var(--bdr);padding:60px 48px;text-align:center;}
+.cta-inner{max-width:500px;margin:0 auto;}
+.cta h2{font-size:22px;font-weight:700;letter-spacing:-.4px;margin-bottom:8px;}
+.cta p{font-size:14px;color:var(--soft);margin-bottom:22px;}
+.cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+.btn-p{display:inline-flex;align-items:center;gap:7px;padding:10px 22px;background:var(--blue);color:#fff;border:none;border-radius:var(--rb);font-size:14px;font-weight:500;cursor:pointer;font-family:var(--f);}
+.btn-p:hover{opacity:.88;}
+.btn-s{display:inline-flex;align-items:center;gap:7px;padding:10px 22px;background:var(--w);color:var(--ink);border:1.5px solid var(--bdr);border-radius:var(--rb);font-size:14px;font-weight:500;cursor:pointer;font-family:var(--f);}
+.btn-s:hover{border-color:var(--ink);}
+@media(max-width:900px){.icards,.oem-grid,.scards{grid-template-columns:1fr;}.cs-grid{grid-template-columns:repeat(2,1fr);}.hero,.nav,.wrap,.snav-wrap,.cta{padding-left:24px;padding-right:24px;}.li{flex:0 0 33%;}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-logo" href="#">incode</a>
+  <div class="nav-right">
+    <span class="version-badge">Version B — includes OEM partners</span>
+    <button class="nav-btn">Request a demo</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-noise"></div>
+  <div class="hero-inner">
+    <div class="eyebrow">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1" y="1" width="4" height="4" rx="1" stroke="#80B8FF" stroke-width="1.3"/><rect x="7" y="1" width="4" height="4" rx="1" stroke="#80B8FF" stroke-width="1.3"/><rect x="1" y="7" width="4" height="4" rx="1" stroke="#80B8FF" stroke-width="1.3"/><rect x="7" y="7" width="4" height="4" rx="1" stroke="#80B8FF" stroke-width="1.3"/></svg>
+      Partners & Integrations
+    </div>
+    <h1>An ecosystem built around<br><em>verified identity</em></h1>
+    <p class="hero-sub">Incode powers identity verification across enterprise platforms, embedded products, and a channel of certified partners — from IAM and ITSM to financial services, hospitality, and age verification.</p>
+  </div>
+  <div class="logo-strip" style="margin-top:48px">
+    <div class="li"><img src="https://logo.clearbit.com/okta.com" alt="Okta"></div>
+    <div class="li"><img src="https://logo.clearbit.com/microsoft.com" alt="Microsoft"></div>
+    <div class="li"><img src="https://logo.clearbit.com/experian.com" alt="Experian"></div>
+    <div class="li"><img src="https://logo.clearbit.com/equifax.com" alt="Equifax"></div>
+    <div class="li"><img src="https://logo.clearbit.com/servicenow.com" alt="ServiceNow"></div>
+    <div class="li"><img src="https://logo.clearbit.com/workday.com" alt="Workday"></div>
+    <div class="li"><img src="https://logo.clearbit.com/greenhouse.com" alt="Greenhouse"></div>
+    <div class="li"><img src="https://logo.clearbit.com/slack.com" alt="Slack"></div>
+  </div>
+</section>
+
+<div class="snav-wrap">
+  <div class="snav">
+    <button class="stab active" onclick="goTo('platform',this)">Platform integrations</button>
+    <button class="stab" onclick="goTo('oem',this)">Embedded & OEM</button>
+    <button class="stab" onclick="goTo('channel',this)">Channel partners</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- PLATFORM INTEGRATIONS -->
+  <div class="sec" id="platform">
+    <div class="sec-ey">Platform integrations</div>
+    <h2 class="sec-title">Connect Incode to your existing stack</h2>
+    <p class="sec-body">Pre-built integrations across every layer of the enterprise identity stack. Incode drops into your IAM, ITSM, HR, IGA, and ITDR platforms — no custom development required.</p>
+
+    <div class="sub">IAM & CIAM</div>
+    <div class="icards" style="margin-bottom:0">
+      <div class="icard">
+        <div class="icard-icon"><img src="https://logo.clearbit.com/okta.com" alt="Okta" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Okta</span></div>
+        <div>
+          <div class="icard-top"><div class="icard-name">Okta Workforce</div><div class="status-dot live"></div></div>
+          <div class="icard-desc">Biometric step-up verification and account recovery in Okta workflows. Listed on OIN. Device independent.</div>
+          <div class="uc-row"><span class="uc">Step-up MFA</span><span class="uc">Account recovery</span><span class="uc">New hire IDV</span></div>
+        </div>
+      </div>
+      <div class="icard">
+        <div class="icard-icon"><img src="https://logo.clearbit.com/microsoft.com" alt="Entra" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Entra</span></div>
+        <div>
+          <div class="icard-top"><div class="icard-name">Microsoft Entra ID</div><div class="status-dot live"></div></div>
+          <div class="icard-desc">Incode biometric verification native to Entra ID. Protecting provisioning, MFA recovery, and privileged access. Listed on AppSource.</div>
+          <div class="uc-row"><span class="uc">Privileged access</span><span class="uc">MFA recovery</span></div>
+        </div>
+      </div>
+      <div class="icard">
+        <div class="icard-icon"><img src="https://logo.clearbit.com/pingidentity.com" alt="Ping" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Ping</span></div>
+        <div>
+          <div class="icard-top"><div class="icard-name">PingOne DaVinci</div><div class="status-dot live"></div></div>
+          <div class="icard-desc">Incode IDV in PingOne DaVinci orchestration for workforce and consumer identity flows.</div>
+          <div class="uc-row"><span class="uc">Step-up verification</span><span class="uc">CIAM onboarding</span></div>
+        </div>
+      </div>
+      <div class="icard">
+        <div class="icard-icon"><img src="https://logo.clearbit.com/auth0.com" alt="Auth0" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Auth0</span></div>
+        <div>
+          <div class="icard-top"><div class="icard-name">Auth0 / Okta Customer Identity</div><div class="status-dot live"></div></div>
+          <div class="icard-desc">Incode IDV as step-up verification inside Auth0 flows. Verified identity stored as a claim on the Okta profile.</div>
+          <div class="uc-row"><span class="uc">Consumer IDV</span><span class="uc">Step-up MFA</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub">ITSM & help desk</div>
+    <div class="icards" style="margin-bottom:0">
+      <div class="icard">
+        <div class="icard-icon"><img src="https://logo.clearbit.com/servicenow.com" alt="ServiceNow" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">SN</span></div>
+        <div>
+          <div class="icard-top"><div class="icard-name">ServiceNow</div><div class="status-dot wip"></div></div>
+          <div class="icard-desc">Full IDV integration for ServiceNow IT workflows. IDV status on incident, request, and change records. Pursuing Store listing.</div>
+          <div class="uc-row"><span class="uc">Password reset</span><span class="uc">Anti-impersonation</span><span class="uc">MFA recovery</span></div>
+        </div>
+      </div>
+      <div class="icard">
+        <div class="icard-icon"><img src="https://logo.clearbit.com/slack.com" alt="Slack" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Slack</span></div>
+        <div>
+          <div class="icard-top"><div class="icard-name">Slack</div><div class="status-dot live"></div></div>
+          <div class="icard-desc">Verification triggered and completed inside Slack. Listed on Slack App Directory. No context switching for employees.</div>
+          <div class="uc-row"><span class="uc">In-workflow IDV</span><span class="uc">Help desk</span></div>
+        </div>
+      </div>
+      <div class="icard">
+        <div class="icard-icon"><img src="https://logo.clearbit.com/atlassian.com" alt="Jira" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Jira</span></div>
+        <div>
+          <div class="icard-top"><div class="icard-name">Jira Service Management</div><div class="status-dot wip"></div></div>
+          <div class="icard-desc">Incode IDV in Jira Service Management workflows. Available on Atlassian Marketplace.</div>
+          <div class="uc-row"><span class="uc">Service requests</span><span class="uc">Credential resets</span></div>
+        </div>
+      </div>
+      <div class="icard">
+        <div class="icard-icon"><img src="https://logo.clearbit.com/microsoft.com" alt="Defender" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Defender</span></div>
+        <div>
+          <div class="icard-top"><div class="icard-name">Microsoft Defender for Identity</div><div class="status-dot wip"></div></div>
+          <div class="icard-desc">Logic Apps connector — triggers IDV when Defender detects anomalous activity. Confirm identity, then confirm or revoke access.</div>
+          <div class="uc-row"><span class="uc">Threat remediation</span><span class="uc">ITDR response</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub">HR & recruiting</div>
+    <div class="icards" style="margin-bottom:0">
+      <div class="icard">
+        <div class="icard-icon"><img src="https://logo.clearbit.com/greenhouse.com" alt="Greenhouse" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">GH</span></div>
+        <div>
+          <div class="icard-top"><div class="icard-name">Greenhouse</div><div class="status-dot live"></div></div>
+          <div class="icard-desc">Candidate identity verification embedded in Greenhouse workflows. The person who joins is the same person who interviewed.</div>
+          <div class="uc-row"><span class="uc">Candidate verification</span><span class="uc">Pre-hire IDV</span></div>
+        </div>
+      </div>
+      <div class="icard">
+        <div class="icard-icon"><img src="https://logo.clearbit.com/workday.com" alt="Workday" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Workday</span></div>
+        <div>
+          <div class="icard-top"><div class="icard-name">Workday Recruiting</div><div class="status-dot live"></div></div>
+          <div class="icard-desc">IDV at the recruiting-to-hire transition. Identity confirmed before day-one system access is granted.</div>
+          <div class="uc-row"><span class="uc">Pre-access IDV</span><span class="uc">New hire verification</span></div>
+        </div>
+      </div>
+      <div class="icard">
+        <div class="icard-icon"><img src="https://logo.clearbit.com/lever.co" alt="Lever" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Lever</span></div>
+        <div>
+          <div class="icard-top"><div class="icard-name">Lever</div><div class="status-dot live"></div></div>
+          <div class="icard-desc">Incode identity verification in Lever ATS hiring workflows at the offer and onboarding stage.</div>
+          <div class="uc-row"><span class="uc">Candidate verification</span></div>
+        </div>
+      </div>
+      <div class="icard">
+        <div class="icard-icon"><img src="https://logo.clearbit.com/ashbyhq.com" alt="Ashby" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">Ashby</span></div>
+        <div>
+          <div class="icard-top"><div class="icard-name">Ashby</div><div class="status-dot live"></div></div>
+          <div class="icard-desc">Candidate identity confirmation at the offer stage for high-growth recruiting teams using Ashby.</div>
+          <div class="uc-row"><span class="uc">Candidate verification</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub">IGA — identity governance</div>
+    <div class="icards">
+      <div class="icard">
+        <div class="icard-icon"><img src="https://logo.clearbit.com/sailpoint.com" alt="SailPoint" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">SailPoint</span></div>
+        <div>
+          <div class="icard-top"><div class="icard-name">SailPoint Identity Security Cloud</div><div class="status-dot live"></div></div>
+          <div class="icard-desc">Available through partner integration. Binds SailPoint access governance decisions to biometrically verified identity for external users and contractors.</div>
+          <div class="uc-row"><span class="uc">External user onboarding</span><span class="uc">Access reviews</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OEM & EMBEDDED -->
+  <div class="sec" id="oem">
+    <div class="sec-ey">Embedded & OEM partners</div>
+    <h2 class="sec-title">Incode powers identity in products you already use</h2>
+    <p class="sec-body">These partners have built Incode biometric verification into their products. When you use their platform, Incode is the identity verification engine running underneath it.</p>
+
+    <div class="callout">
+      <div class="callout-icon">ℹ</div>
+      <div class="callout-text">Embedded partners integrate Incode into their product and sell to their customers. This is different from a platform integration — here, Incode is a component inside their stack, not a direct integration you configure yourself.</div>
+    </div>
+
+    <div class="sub">Financial services & identity data</div>
+    <div class="oem-grid">
+      <div class="oem-card">
+        <div class="oem-logo"><img src="https://logo.clearbit.com/experian.com" alt="Experian" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="lf" style="display:none">Experian</span></div>
+        <div class="oem-name">Experian</div>
+        <div class="oem-desc">Incode biometric and document verification embedded in Experian CrossCore — the identity and fraud orchestration platform used by banks and fintechs during customer onboarding.</div>
+        <div class="tags"><span class="tag grn">OEM / Embedded</span><span class="tag">Financial Services</span></div>
+      </div>
+      <div class="oem-card">
+        <div class="oem-logo"><img src="https://logo.clearbit.com/equifax.com" alt="Equifax" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="lf" style="display:none">Equifax</span></div>
+        <div class="oem-name">Equifax</div>
+        <div class="oem-desc">Incode biometric verification paired with Equifax identity and fraud data — SSN validation, fraud alerts, and synthetic identity signals — for a complete IDV and data-based KYC decision.</div>
+        <div class="tags"><span class="tag grn">OEM / Embedded</span><span class="tag">Financial Services</span></div>
+      </div>
+      <div class="oem-card">
+        <div class="oem-logo"><img src="https://logo.clearbit.com/transunion.com" alt="TransUnion" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="lf" style="display:none">TransUnion</span></div>
+        <div class="oem-name">TransUnion</div>
+        <div class="oem-desc">Incode document and biometric verification combined with TransUnion IDVision and TLOxp identity graph signals for composite IDV in lending, insurance, and healthcare onboarding.</div>
+        <div class="tags"><span class="tag grn">OEM / Embedded</span><span class="tag">Financial Services</span></div>
+      </div>
+      <div class="oem-card">
+        <div class="oem-logo"><img src="https://logo.clearbit.com/alloy.co" alt="Alloy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="lf" style="display:none">Alloy</span></div>
+        <div class="oem-name">Alloy</div>
+        <div class="oem-desc">Incode IDV as a biometric and document verification node inside Alloy's KYC and fraud decisioning engine, used by banks and fintechs for account opening and onboarding decisions.</div>
+        <div class="tags"><span class="tag grn">OEM / Embedded</span><span class="tag">Fintech / Banking</span></div>
+      </div>
+    </div>
+
+    <div class="sub" style="margin-top:28px">Identity verification platforms</div>
+    <div class="oem-grid">
+      <div class="oem-card">
+        <div class="oem-logo"><img src="https://logo.clearbit.com/iddataweb.com" alt="IDDataWeb" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="lf" style="display:none">IDDataWeb</span></div>
+        <div class="oem-name">IDDataWeb</div>
+        <div class="oem-desc">Incode powers high-assurance identity proofing within IDDataWeb's attribute exchange and identity orchestration network.</div>
+        <div class="tags"><span class="tag grn">OEM / Embedded</span><span class="tag">Identity Orchestration</span></div>
+      </div>
+      <div class="oem-card">
+        <div class="oem-logo"><img src="https://logo.clearbit.com/aristotleinc.com" alt="Aristotle" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="lf" style="display:none">Aristotle</span></div>
+        <div class="oem-name">Aristotle</div>
+        <div class="oem-desc">Incode biometric verification at the core of Aristotle's age and identity platform for regulated gaming, gambling, and voter verification use cases.</div>
+        <div class="tags"><span class="tag grn">OEM / Embedded</span><span class="tag">Gaming & Voting</span></div>
+      </div>
+      <div class="oem-card">
+        <div class="oem-logo"><img src="https://logo.clearbit.com/onefootprint.com" alt="Footprint" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="lf" style="display:none">Footprint</span></div>
+        <div class="oem-name">Footprint</div>
+        <div class="oem-desc">Incode facial biometrics power the verification layer inside Footprint's portable KYC and onboarding infrastructure for fintechs.</div>
+        <div class="tags"><span class="tag grn">OEM / Embedded</span><span class="tag">KYC & Onboarding</span></div>
+      </div>
+    </div>
+
+    <div class="sub" style="margin-top:28px">Specialized verticals</div>
+    <div class="oem-grid">
+      <div class="oem-card">
+        <div class="oem-logo"><img src="https://logo.clearbit.com/snappt.com" alt="Snappt" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="lf" style="display:none">Snappt</span></div>
+        <div class="oem-name">Snappt</div>
+        <div class="oem-desc">Incode verification embedded inside Snappt's rental application fraud detection platform for property managers and landlords.</div>
+        <div class="tags"><span class="tag amb">OEM / Embedded</span><span class="tag">Rental & Property</span></div>
+      </div>
+      <div class="oem-card">
+        <div class="oem-logo"><img src="https://logo.clearbit.com/alliants.com" alt="Alliants" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="lf" style="display:none">Alliants</span></div>
+        <div class="oem-name">Alliants</div>
+        <div class="oem-desc">Incode identity verification embedded in Alliants' hospitality and travel platform, confirming guest identity at check-in as part of a personalized experience.</div>
+        <div class="tags"><span class="tag amb">OEM / Embedded</span><span class="tag">Travel & Hospitality</span></div>
+      </div>
+      <div class="oem-card">
+        <div class="oem-logo"><img src="https://logo.clearbit.com/kws.com" alt="KWS" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="lf" style="display:none">KWS</span></div>
+        <div class="oem-name">KWS</div>
+        <div class="oem-desc">Regulatory-compliant age verification for gaming, apps, and digital services accessed by minors, powered by Incode biometric verification.</div>
+        <div class="tags"><span class="tag amb">OEM / Embedded</span><span class="tag">Age Verification</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHANNEL PARTNERS -->
+  <div class="sec" id="channel">
+    <div class="sec-ey">Channel partners</div>
+    <h2 class="sec-title">Deploy Incode with the right partner</h2>
+    <p class="sec-body">Incode's channel partners span cybersecurity, IT procurement, and enterprise identity integration across North America and LATAM.</p>
+
+    <div class="sub">Resellers</div>
+    <div class="scards">
+      <div class="scard">
+        <div class="scard-logo"><img src="https://logo.clearbit.com/guidepointsecurity.com" alt="Guidepoint" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="lf" style="display:none">Guidepoint Security</span></div>
+        <div class="scard-name">Guidepoint Security</div>
+        <div class="scard-desc">Cybersecurity-focused reseller with strong CISO relationships across North American enterprise accounts.</div>
+        <div class="tags"><span class="tag pur">Reseller</span><span class="tag">North America</span></div>
+      </div>
+      <div class="scard">
+        <div class="scard-logo"><img src="https://logo.clearbit.com/shi.com" alt="SHI" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="lf" style="display:none">SHI International</span></div>
+        <div class="scard-name">SHI International</div>
+        <div class="scard-desc">Global IT solutions provider with direct procurement access across Fortune 1000 accounts.</div>
+        <div class="tags"><span class="tag pur">Reseller</span><span class="tag">North America</span></div>
+      </div>
+      <div class="scard">
+        <div class="scard-logo"><img src="https://logo.clearbit.com/optiv.com" alt="Optiv" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="lf" style="display:none">Optiv</span></div>
+        <div class="scard-name">Optiv</div>
+        <div class="scard-desc">End-to-end cybersecurity provider with deep IAM expertise and broad enterprise reach.</div>
+        <div class="tags"><span class="tag pur">Reseller</span><span class="tag">North America</span></div>
+      </div>
+      <div class="apply"><p>Interested in reselling Incode?</p><button class="apply-btn">Apply now →</button></div>
+    </div>
+
+    <div class="sub" style="margin-top:28px">System integrators & value-added resellers</div>
+    <div class="scards">
+      <div class="scard">
+        <div class="scard-logo"><img src="https://logo.clearbit.com/nttdata.com" alt="NTT Data" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="lf" style="display:none">NTT Data</span></div>
+        <div class="scard-name">NTT Data</div>
+        <div class="scard-desc">Global SI delivering Incode alongside managed identity services across financial services, healthcare, and public sector.</div>
+        <div class="tags"><span class="tag grn">VAR / SI</span><span class="tag">Global</span></div>
+      </div>
+      <div class="scard">
+        <div class="scard-logo"><img src="https://logo.clearbit.com/tec360.com" alt="Tec360" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="lf" style="display:none">Tec360</span></div>
+        <div class="scard-name">Tec360</div>
+        <div class="scard-desc">Identity-specialized integrator with deep workforce IAM expertise across LATAM deployments.</div>
+        <div class="tags"><span class="tag grn">VAR / SI</span><span class="tag">LATAM</span></div>
+      </div>
+      <div class="apply"><p>Want to build a practice around Incode?</p><button class="apply-btn">Apply now →</button></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="cta">
+  <div class="cta-inner">
+    <h2>Don't see your platform?</h2>
+    <p>We're expanding our ecosystem continuously. Reach out to explore what's possible or join the partner program.</p>
+    <div class="cta-btns">
+      <button class="btn-p">Request an integration</button>
+      <button class="btn-s">Become a partner</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function goTo(id,btn){
+  const el=document.getElementById(id);
+  if(el) window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-130,behavior:'smooth'});
+  document.querySelectorAll('.stab').forEach(t=>t.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+}
+window.addEventListener('scroll',()=>{
+  const ids=['platform','oem','channel'];
+  const tabs=document.querySelectorAll('.stab');
+  let a=0;
+  ids.forEach((id,i)=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<=140)a=i;});
+  tabs.forEach((t,i)=>t.classList.toggle('active',i===a));
+},{passive:true});
+</script>
+</body>
+</html>
