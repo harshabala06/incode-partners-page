@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partners & Integrations | Incode</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #006AFF;
+    --blue-light: rgba(0,106,255,0.10);
+    --blue-mid: rgba(0,106,255,0.18);
+    --ink: #111111;
+    --ink-soft: #444444;
+    --ink-muted: #777777;
+    --white: #FFFFFF;
+    --surface: #F6F6F8;
+    --border: #E6E6E6;
+    --radius-btn: 7.86px;
+    --radius-card: 14px;
+    --radius-tag: 20px;
+    --font: 'Rethink Sans', sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font); background: var(--white); color: var(--ink); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+  /* NAV */
+  .site-nav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); height: 72px; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; }
+  .nav-logo { font-size: 20px; font-weight: 700; letter-spacing: -0.3px; color: var(--ink); text-decoration: none; }
+  .nav-cta { display: inline-flex; align-items: center; gap: 8px; padding: 9px 20px; background: var(--blue); color: white; border: none; border-radius: var(--radius-btn); font-size: 14px; font-weight: 500; cursor: pointer; font-family: var(--font); }
+  .nav-cta:hover { opacity: 0.88; }
+  .nav-cta svg { width: 13px; height: 13px; }
+
+  /* HERO */
+  .hero { background: linear-gradient(160deg, #000000 0%, #001433 45%, #0030A0 75%, #006AFF 100%); padding: 96px 48px 80px; position: relative; overflow: hidden; }
+  .hero::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 120px; background: linear-gradient(to bottom, transparent, #000000 80%); pointer-events: none; }
+  .hero-noise { position: absolute; inset: 0; opacity: 0.03; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); pointer-events: none; }
+  .hero-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 7px; background: var(--blue-mid); border: 1px solid rgba(0,106,255,0.3); color: #80B8FF; font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 5px 14px; border-radius: var(--radius-tag); margin-bottom: 28px; }
+  .hero h1 { font-size: clamp(38px, 5.5vw, 62px); font-weight: 700; letter-spacing: -1.8px; line-height: 1.08; color: #EEEEEE; margin-bottom: 22px; max-width: 780px; }
+  .hero h1 em { color: var(--blue); font-style: normal; }
+  .hero-sub { font-size: 17px; line-height: 1.7; color: rgba(238,238,238,0.6); max-width: 580px; margin-bottom: 40px; }
+  .hero-stats { display: flex; gap: 40px; flex-wrap: wrap; }
+  .hero-stat-n { font-size: 28px; font-weight: 700; color: #EEEEEE; letter-spacing: -0.5px; }
+  .hero-stat-l { font-size: 13px; color: rgba(238,238,238,0.5); margin-top: 2px; }
+
+  /* PILLARS */
+  .pillars-strip { background: #000000; padding: 0 48px 64px; border-bottom: 1px solid #1A1A1A; }
+  .pillars-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid #222222; padding-top: 48px; gap: 0; }
+  .pillar { padding: 0 36px 0 0; border-right: 1px solid #222222; }
+  .pillar:last-child { border-right: none; padding-right: 0; }
+  .pillar:not(:first-child) { padding-left: 36px; }
+  .pillar-num { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  .pillar-title { font-size: 15px; font-weight: 600; color: #EEEEEE; margin-bottom: 8px; }
+  .pillar-body { font-size: 13px; color: #666666; line-height: 1.65; }
+
+  /* SECTION NAV */
+  .section-selector-wrap { background: #000000; padding: 0 48px; border-bottom: 1px solid #222222; position: sticky; top: 72px; z-index: 100; }
+  .section-selector { max-width: 1100px; margin: 0 auto; display: flex; gap: 0; overflow-x: auto; }
+  .section-tab { padding: 18px 24px; font-size: 14px; font-weight: 500; color: #888888; cursor: pointer; border: none; background: transparent; border-bottom: 2px solid transparent; white-space: nowrap; transition: color 0.2s, border-color 0.2s; font-family: var(--font); }
+  .section-tab:hover { color: #EEEEEE; }
+  .section-tab.active { color: #EEEEEE; border-bottom-color: var(--blue); }
+
+  /* CONTENT */
+  .content-wrap { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
+  .section-block { padding: 72px 0; }
+  .section-block + .section-block { border-top: 1px solid var(--border); }
+  .section-top { margin-bottom: 40px; }
+  .section-eyebrow { display: inline-flex; align-items: center; background: var(--blue-light); color: var(--blue); font-size: 13px; font-weight: 500; padding: 4px 12px; border-radius: var(--radius-tag); margin-bottom: 14px; }
+  .section-title { font-size: 30px; font-weight: 700; letter-spacing: -0.8px; color: var(--ink); margin-bottom: 10px; line-height: 1.2; }
+  .section-body { font-size: 15px; color: var(--ink-soft); max-width: 620px; line-height: 1.7; }
+
+  /* SUBSECTION LABEL */
+  .sub-label { font-size: 11px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+
+  /* PARTNER GRID */
+  .partner-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .partner-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-card); padding: 26px; transition: border-color 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; }
+  .partner-card:hover { border-color: rgba(0,106,255,0.35); box-shadow: 0 4px 20px rgba(0,106,255,0.08); }
+  .card-logo { height: 36px; margin-bottom: 16px; display: flex; align-items: center; }
+  .card-logo img { max-height: 26px; max-width: 120px; object-fit: contain; object-position: left center; }
+  .logo-fallback { font-size: 14px; font-weight: 700; color: var(--ink); letter-spacing: -0.3px; }
+  .card-name { font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 7px; }
+  .card-desc { font-size: 13px; color: var(--ink-soft); line-height: 1.65; flex: 1; margin-bottom: 16px; }
+  .card-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .card-tag { padding: 3px 9px; border-radius: var(--radius-tag); font-size: 11px; font-weight: 500; white-space: nowrap; background: var(--surface); color: var(--ink-soft); border: 1px solid var(--border); }
+  .card-tag.blue { background: var(--blue-light); color: var(--blue); border-color: rgba(0,106,255,0.2); }
+  .card-tag.green { background: #E8F5E9; color: #2E7D32; border-color: rgba(46,125,50,0.2); }
+  .card-tag.purple { background: #F3E8FF; color: #6B21A8; border-color: rgba(107,33,168,0.2); }
+  .card-tag.coral { background: #FFF0ED; color: #C2390D; border-color: rgba(194,57,13,0.2); }
+
+  /* APPLY CARD */
+  .apply-card { border: 1.5px dashed var(--border); border-radius: var(--radius-card); padding: 26px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 12px; min-height: 170px; }
+  .apply-card p { font-size: 13px; color: var(--ink-muted); }
+  .btn-apply { padding: 8px 18px; border-radius: var(--radius-btn); font-size: 13px; font-weight: 500; border: 1.5px solid var(--border); background: white; color: var(--ink-soft); cursor: pointer; font-family: var(--font); transition: border-color 0.2s, color 0.2s; }
+  .btn-apply:hover { border-color: var(--blue); color: var(--blue); }
+
+  /* CTA BAND */
+  .cta-band { background: var(--surface); border-top: 1px solid var(--border); padding: 64px 48px; text-align: center; }
+  .cta-band-inner { max-width: 540px; margin: 0 auto; }
+  .cta-band h2 { font-size: 26px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 10px; }
+  .cta-band p { font-size: 15px; color: var(--ink-soft); margin-bottom: 24px; }
+  .cta-group { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: var(--blue); color: white; border: none; border-radius: var(--radius-btn); font-size: 14px; font-weight: 500; cursor: pointer; font-family: var(--font); }
+  .btn-primary:hover { opacity: 0.88; }
+  .btn-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: white; color: var(--ink); border: 1.5px solid var(--border); border-radius: var(--radius-btn); font-size: 14px; font-weight: 500; cursor: pointer; font-family: var(--font); }
+  .btn-secondary:hover { border-color: var(--ink); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .partner-grid { grid-template-columns: repeat(2, 1fr); }
+    .pillars-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    .pillar { border-right: none; padding: 0; border-top: 1px solid #222222; padding-top: 24px; }
+    .pillar:first-child, .pillar:nth-child(2) { border-top: none; padding-top: 0; }
+    .hero, .pillars-strip { padding-left: 24px; padding-right: 24px; }
+    .content-wrap { padding: 0 24px; }
+    .site-nav { padding: 0 24px; }
+    .section-selector-wrap { padding: 0 24px; }
+    .cta-band { padding: 48px 24px; }
+  }
+  @media (max-width: 600px) {
+    .partner-grid { grid-template-columns: 1fr; }
+    .pillars-grid { grid-template-columns: 1fr; }
+    .pillar:nth-child(2) { border-top: 1px solid #222222; padding-top: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <a class="nav-logo" href="#">incode</a>
+  <button class="nav-cta">
+    Request a demo
+    <svg viewBox="0 0 13 13" fill="none"><path d="M2 11L11 2M11 2H4M11 2V9" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-noise"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="2" width="4" height="4" rx="1" stroke="#80B8FF" stroke-width="1.5"/><rect x="8" y="2" width="4" height="4" rx="1" stroke="#80B8FF" stroke-width="1.5"/><rect x="2" y="8" width="4" height="4" rx="1" stroke="#80B8FF" stroke-width="1.5"/><rect x="8" y="8" width="4" height="4" rx="1" stroke="#80B8FF" stroke-width="1.5"/></svg>
+      Partners & Integrations
+    </div>
+    <h1>Built to work<br>where you <em>already work</em></h1>
+    <p class="hero-sub">Incode connects to the platforms, data sources, and partners your organization relies on — so identity verification fits into your stack, not the other way around.</p>
+    <div class="hero-stats">
+      <div><div class="hero-stat-n">50+</div><div class="hero-stat-l">Technology integrations</div></div>
+      <div><div class="hero-stat-n">200+</div><div class="hero-stat-l">Countries covered</div></div>
+      <div><div class="hero-stat-n">30+</div><div class="hero-stat-l">Authoritative data sources</div></div>
+      <div><div class="hero-stat-n">11</div><div class="hero-stat-l">Government data connections</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<div class="pillars-strip">
+  <div class="pillars-grid">
+    <div class="pillar"><div class="pillar-num">01 — Channel Partners</div><div class="pillar-title">Deliver Incode to your customers</div><div class="pillar-body">Resellers and system integrators who bring Incode to enterprise accounts, with or without implementation services.</div></div>
+    <div class="pillar"><div class="pillar-num">02 — Technology Ecosystem</div><div class="pillar-title">Embed or integrate</div><div class="pillar-body">Incode powers products your customers already use, and connects natively to the platforms running your workforce and identity stack.</div></div>
+    <div class="pillar"><div class="pillar-num">03 — Government Data</div><div class="pillar-title">Verify at the source</div><div class="pillar-body">Direct connections to national ID registries, DMVs, and biometric databases across LATAM, North America, APAC, and Africa.</div></div>
+    <div class="pillar"><div class="pillar-num">04 — Data Network</div><div class="pillar-title">Global coverage, one API</div><div class="pillar-body">eKYC, KYB, credit bureau, telco, and sanctions data across 200+ countries — accessed through a single Incode integration.</div></div>
+  </div>
+</div>
+
+<!-- STICKY SECTION NAV -->
+<div class="section-selector-wrap">
+  <div class="section-selector">
+    <button class="section-tab active" onclick="scrollToSection('channel', this)">Channel partners</button>
+    <button class="section-tab" onclick="scrollToSection('tech', this)">Technology ecosystem</button>
+    <button class="section-tab" onclick="scrollToSection('gov', this)">Government data connections</button>
+    <button class="section-tab" onclick="scrollToSection('data', this)">Data & verification network</button>
+  </div>
+</div>
+
+<div class="content-wrap">
+
+  <!-- ── 1. CHANNEL PARTNERS ── -->
+  <div class="section-block" id="channel">
+    <div class="section-top">
+      <div class="section-eyebrow">Channel partners</div>
+      <h2 class="section-title">Organizations that bring Incode to market</h2>
+      <p class="section-body">Incode's channel partners operate across cybersecurity, IT procurement, managed services, and enterprise integration — spanning North America, LATAM, and beyond. Whether you're looking to purchase through a trusted security reseller or work with a systems integrator to deploy and manage Incode, our partner network has you covered.</p>
+    </div>
+
+    <div style="margin-bottom:14px"><div class="sub-label">Resellers</div></div>
+    <div class="partner-grid" style="margin-bottom:36px">
+      <div class="partner-card">
+        <div class="card-logo"><img src="https://logo.clearbit.com/guidepointsecurity.com" alt="Guidepoint Security" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback" style="display:none">Guidepoint Security</span></div>
+        <div class="card-name">Guidepoint Security</div>
+        <div class="card-desc">Cybersecurity-focused reseller serving enterprise and mid-market customers across North America, with strong CISO and security buyer relationships.</div>
+        <div class="card-tags"><span class="card-tag purple">Reseller</span><span class="card-tag">North America</span><span class="card-tag">Cybersecurity</span></div>
+      </div>
+      <div class="partner-card">
+        <div class="card-logo"><img src="https://logo.clearbit.com/shi.com" alt="SHI International" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback" style="display:none">SHI International</span></div>
+        <div class="card-name">SHI International</div>
+        <div class="card-desc">Global IT solutions provider with direct procurement relationships across Fortune 1000 accounts, offering Incode as part of a broader enterprise software portfolio.</div>
+        <div class="card-tags"><span class="card-tag purple">Reseller</span><span class="card-tag">North America</span><span class="card-tag">IT Procurement</span></div>
+      </div>
+      <div class="partner-card">
+        <div class="card-logo"><img src="https://logo.clearbit.com/optiv.com" alt="Optiv" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback" style="display:none">Optiv</span></div>
+        <div class="card-name">Optiv</div>
+        <div class="card-desc">End-to-end cybersecurity solutions provider with broad enterprise reach and deep expertise in identity and access management programs.</div>
+        <div class="card-tags"><span class="card-tag purple">Reseller</span><span class="card-tag">North America</span><span class="card-tag">Cybersecurity</span></div>
+      </div>
+      <div class="apply-card"><p>Interested in reselling Incode?</p><button class="btn-apply">Apply now →</button></div>
+    </div>
+
+    <div style="margin-bottom:14px"><div class="sub-label">Value-added resellers & system integrators</div></div>
+    <div class="partner-grid">
+      <div class="partner-card">
+        <div class="card-logo"><img src="https://logo.clearbit.com/nttdata.com" alt="NTT Data" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback" style="display:none">NTT Data</span></div>
+        <div class="card-name">NTT Data</div>
+        <div class="card-desc">Global system integrator delivering Incode alongside managed identity services and enterprise integration work across financial services, healthcare, and public sector.</div>
+        <div class="card-tags"><span class="card-tag blue">VAR / SI</span><span class="card-tag">Global</span><span class="card-tag">Managed Services</span></div>
+      </div>
+      <div class="partner-card">
+        <div class="card-logo"><img src="https://logo.clearbit.com/tec360.com" alt="Tec360" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback" style="display:none">Tec360</span></div>
+        <div class="card-name">Tec360</div>
+        <div class="card-desc">Identity-specialized integrator with deep expertise in workforce IAM deployments across LATAM, delivering Incode implementations bundled with advisory and integration services.</div>
+        <div class="card-tags"><span class="card-tag blue">VAR / SI</span><span class="card-tag">LATAM</span><span class="card-tag">IAM</span></div>
+      </div>
+      <div class="apply-card"><p>Interested in delivering Incode implementations?</p><button class="btn-apply">Apply now →</button></div>
+    </div>
+  </div>
+
+  <!-- ── 2. TECHNOLOGY ECOSYSTEM ── -->
+  <div class="section-block" id="tech">
+    <div class="section-top">
+      <div class="section-eyebrow">Technology ecosystem</div>
+      <h2 class="section-title">Embedded in the products you use. Connected to the platforms you run.</h2>
+      <p class="section-body">Incode powers identity verification inside third-party products your customers already trust — and connects natively to the IAM, HR, ITSM, and collaboration platforms running your workforce. Two distinct integration models, one unified Incode platform.</p>
+    </div>
+
+    <div style="margin-bottom:14px"><div class="sub-label">OEM & embedded — Incode powers their product</div></div>
+    <div class="partner-grid" style="margin-bottom:36px">
+      <div class="partner-card">
+        <div class="card-logo"><img src="https://logo.clearbit.com/experian.com" alt="Experian" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback" style="display:none">Experian</span></div>
+        <div class="card-name">Experian</div>
+        <div class="card-desc">Incode biometric verification embedded within Experian's identity and fraud platform, powering verification for Experian's enterprise customer base.</div>
+        <div class="card-tags"><span class="card-tag green">OEM / Embedded</span><span class="card-tag">Financial Services</span></div>
+      </div>
+      <div class="partner-card">
+        <div class="card-logo"><img src="https://logo.clearbit.com/aristotleinc.com" alt="Aristotle" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback" style="display:none">Aristotle</span></div>
+        <div class="card-name">Aristotle</div>
+        <div class="card-desc">Incode biometric verification at the core of Aristotle's age and identity platform for regulated gaming, gambling, and voter verification use cases.</div>
+        <div class="card-tags"><span class="card-tag green">OEM / Embedded</span><span class="card-tag">Gaming & Voting</span></div>
+      </div>
+      <div class="partner-card">
+        <div class="card-logo"><img src="https://logo.clearbit.com/onefootprint.com" alt="Footprint" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback" style="display:none">Footprint</span></div>
+        <div class="card-name">Footprint</div>
+        <div class="card-desc">Incode facial biometrics power the verification layer inside Footprint's portable KYC and onboarding infrastructure.</div>
+        <div class="card-tags"><span class="card-tag green">OEM / Embedded</span><span class="card-tag">KYC & Onboarding</span></div>
+      </div>
+      <div class="partner-card">
+        <div class="card-logo"><img src="https://logo.clearbit.com/iddataweb.com" alt="IDDataWeb" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback" style="display:none">IDDataWeb</span></div>
+        <div class="card-name">IDDataWeb</div>
+        <div class="card-desc">Incode powers high-assurance identity proofing flows within IDDataWeb's attribute exchange and identity orchestration network.</div>
+        <div class="card-tags"><span class="card-tag green">OEM / Embedded</span><span class="card-tag">Identity Orchestration</span></div>
+      </div>
+      <div class="partner-card">
+        <div class="card-logo"><img src="https://logo.clearbit.com/snappt.com" alt="Snappt" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback" style="display:none">Snappt</span></div>
+        <div class="card-name">Snappt</div>
+        <div class="card-desc">Incode verification embedded inside Snappt's rental application fraud detection platform, helping property managers verify applicants and reduce tenancy fraud.</div>
+        <div class="card-tags"><span class="card-tag green">OEM / Embedded</span><span class="card-tag">Rental & Property</span></div>
+      </div>
+      <div class="partner-card">
+        <div class="card-logo"><img src="https://logo.clearbit.com/alliants.com" alt="Alliants" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback" style="display:none">Alliants</span></div>
+        <div class="card-name">Alliants</div>
+        <div class="card-desc">Incode identity verification embedded in Alliants' hospitality and travel platform, confirming guest identity at check-in as part of a personalized experience.</div>
+        <div class="card-tags"><span class="card-tag green">OEM / Embedded</span><span class="card-tag">Travel & Hospitality</span></div>
+      </div>
+      <div class="partner-card">
+        <div class="card-logo"><img src="https://logo.clearbit.com/kws.com" alt="KWS" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback" style="display:none">KWS</span></div>
+        <div class="card-name">KWS</div>
+        <div class="card-desc">Regulatory-compliant age verification for gaming, apps, and digital services accessed by minors, powered by Incode biometric verification.</div>
+        <div class="card-tags"><span class="card-tag green">OEM / Embedded</span><span class="card-tag">Age Verification</span></div>
+      </div>
+      <div class="partner-card">
+        <div class="card-logo"><img src="https://logo.clearbit.com/k-id.com" alt="K-ID" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback" style="display:none">K-ID</span></div>
+        <div class="card-name">K-ID</div>
+        <div class="card-desc">Privacy-first age verification for digital platforms, minimizing data collection while meeting compliance requirements — powered by Incode's verification layer.</div>
+        <div class="card-tags"><span class="card-tag green">OEM / Embedded</span><span class="card-tag">Age Verification</span></div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:14px"><div class="sub-label">Platform integrations — connect Incode to your existing stack</div></div>
+    <div class="partner-grid">
+      <div class="partner-card">
+        <div class="card-logo"><img src="https://logo.clearbit.com/okta.com" alt="Okta" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback" style="display:none">Okta</span></div>
+        <div class="card-name">Okta</div>
+        <div class="card-desc">Step-up biometric verification and secure account recovery within Okta authentication workflows — through a device independent solution that augments existing MFA without replacing it.</div>
+        <div class="card-tags"><span class="card-tag coral">Platform Integration</span><span class="card-tag">Workforce IAM</span></div>
+      </div>
+      <div class="partner-card">
+        <div class="card-logo"><img src="https://logo.clearbit.com/microsoft.com" alt="Microsoft Entra" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback" style="display:none">Microsoft Entra</span></div>
+        <div class="card-name">Microsoft Entra</div>
+        <div class="card-desc">Incode biometric verification native to Microsoft Entra ID workflows, protecting account provisioning, MFA recovery, and privileged access events across Microsoft environments.</div>
+        <div class="card-tags"><span class="card-tag coral">Platform Integration</span><span class="card-tag">Workforce IAM</span></div>
+      </div>
+      <div class="partner-card">
+        <div class="card-logo"><img src="https://logo.clearbit.com/servicenow.com" alt="ServiceNow" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback" style="display:none">ServiceNow</span></div>
+        <div class="card-name">ServiceNow</div>
+        <div class="card-desc">Incode verification embedded inside ServiceNow IT workflows, protecting password resets, MFA recovery, and high-risk ticket actions from social engineering and impersonation attacks.</div>
+        <div class="card-tags"><span class="card-tag coral">Platform Integration</span><span class="card-tag">Help Desk & ITSM</span></div>
+      </div>
+      <div class="partner-card">
+        <div class="card-logo"><img src="https://logo.clearbit.com/workday.com" alt="Workday" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback" style="display:none">Workday</span></div>
+        <div class="card-name">Workday</div>
+        <div class="card-desc">Incode verification connected to the Workday employee lifecycle — confirming every new hire is who they claim to be before system access is granted.</div>
+        <div class="card-tags"><span class="card-tag coral">Platform Integration</span><span class="card-tag">HR & Onboarding</span></div>
+      </div>
+      <div class="partner-card">
+        <div class="card-logo"><img src="https://logo.clearbit.com/greenhouse.com" alt="Greenhouse" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback" style="display:none">Greenhouse</span></div>
+        <div class="card-name">Greenhouse</div>
+        <div class="card-desc">Candidate identity verification embedded in Greenhouse recruiting workflows — confirming the person who joins is the same person who interviewed, before access is provisioned.</div>
+        <div class="card-tags"><span class="card-tag coral">Platform Integration</span><span class="card-tag">HR & ATS</span></div>
+      </div>
+      <div class="partner-card">
+        <div class="card-logo"><img src="https://logo.clearbit.com/slack.com" alt="Slack" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback" style="display:none">Slack</span></div>
+        <div class="card-name">Slack</div>
+        <div class="card-desc">Identity verification challenges initiated and completed directly inside Slack — frictionless in-workflow verification for help desk and IT events without leaving the conversation.</div>
+        <div class="card-tags"><span class="card-tag coral">Platform Integration</span><span class="card-tag">Collaboration</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 3. GOVERNMENT DATA CONNECTIONS ── -->
+  <div class="section-block" id="gov">
+    <div class="section-top">
+      <div class="section-eyebrow">Government & authoritative data connections</div>
+      <h2 class="section-title">Verify against the source — not a copy of it</h2>
+      <p class="section-body">Incode connects directly to national ID registries, biometric databases, and issuing authorities — enabling real-time face matching, document validation, and data authentication at the primary source. Every check runs against the government record itself, not a third-party replica.</p>
+    </div>
+    <div class="partner-grid">
+      <div class="partner-card">
+        <div class="card-logo"><img src="https://logo.clearbit.com/serpro.gov.br" alt="SERPRO" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback" style="display:none">SERPRO</span></div>
+        <div class="card-name">SERPRO — Brazil</div>
+        <div class="card-desc">Direct CPF validation and biometric face matching against Brazil's national government registry. Primary source verification for Brazilian nationals at onboarding.</div>
+        <div class="card-tags"><span class="card-tag blue">National ID</span><span class="card-tag blue">Biometric</span><span class="card-tag">LATAM</span></div>
+      </div>
+      <div class="partner-card">
+        <div class="card-logo"><span class="logo-fallback">RENAPER</span></div>
+        <div class="card-name">RENAPER — Argentina</div>
+        <div class="card-desc">Argentina's national population registry — biometric face matching and CUIT/CUIL validation against official government records for compliant onboarding.</div>
+        <div class="card-tags"><span class="card-tag blue">National ID</span><span class="card-tag blue">Biometric</span><span class="card-tag">LATAM</span></div>
+      </div>
+      <div class="partner-card">
+        <div class="card-logo"><span class="logo-fallback">RENAPO / INE</span></div>
+        <div class="card-name">RENAPO / INE — Mexico</div>
+        <div class="card-desc">CURP validation via Mexico's population registry (RENAPO) and biometric face matching against the national voter ID database (INE) — two authoritative sources in one flow.</div>
+        <div class="card-tags"><span class="card-tag blue">National ID</span><span class="card-tag blue">Biometric</span><span class="card-tag">LATAM</span></div>
+      </div>
+      <div class="partner-card">
+        <div class="card-logo"><span class="logo-fallback">RENIEC</span></div>
+        <div class="card-name">RENIEC — Peru</div>
+        <div class="card-desc">Direct DNI validation against Peru's national civil registry for high-confidence, primary source identity verification.</div>
+        <div class="card-tags"><span class="card-tag blue">National ID</span><span class="card-tag">LATAM</span></div>
+      </div>
+      <div class="partner-card">
+        <div class="card-logo"><span class="logo-fallback">Registraduría</span></div>
+        <div class="card-name">Registraduría — Colombia</div>
+        <div class="card-desc">Cédula de Ciudadanía and Cédula de Extranjería validation through Colombia's civil registration authority via certified integration partners.</div>
+        <div class="card-tags"><span class="card-tag blue">National ID</span><span class="card-tag">LATAM</span></div>
+      </div>
+      <div class="partner-card">
+        <div class="card-logo"><span class="logo-fallback">Registro Civil</span></div>
+        <div class="card-name">Registro Civil — Chile</div>
+        <div class="card-desc">Identity verification against Chile's official civil registry records for compliant onboarding of Chilean nationals and residents.</div>
+        <div class="card-tags"><span class="card-tag blue">National ID</span><span class="card-tag">LATAM</span></div>
+      </div>
+      <div class="partner-card">
+        <div class="card-logo"><img src="https://logo.clearbit.com/aamva.org" alt="AAMVA" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-fallback" style="display:none">AAMVA</span></div>
+        <div class="card-name">AAMVA / DMVs — USA</div>
+        <div class="card-desc">Real-time driver's license data and biometric face matching against issuing U.S. state DMVs via AAMVA. Biometric matching currently live in California and Virginia.</div>
+        <div class="card-tags"><span class="card-tag blue">Driver's License</span><span class="card-tag blue">Biometric</span><span class="card-tag">North America</span></div>
+      </div>
+      <div class="partner-card">
+        <div class="card-logo"><span class="logo-fallback">Aadhaar</span></div>
+        <div class="card-name">Aadhaar / UIDAI — India</div>
+        <div class="card-desc">OTP-based and biometric identity authentication against India's national government registry, enabling compliant digital onboarding at scale.</div>
+        <div class="card-tags"><span class="card-tag blue">National ID</span><span class="card-tag blue">Biometric</span><span class="card-tag">APAC</span></div>
+      </div>
+      <div class="partner-card">
+        <div class="card-logo"><span class="logo-fallback">Dukcapil</span></div>
+        <div class="card-name">Dukcapil — Indonesia</div>
+        <div class="card-desc">Identity data verification against Indonesia's civil population administration for compliant digital onboarding.</div>
+        <div class="card-tags"><span class="card-tag blue">National ID</span><span class="card-tag">APAC</span></div>
+      </div>
+      <div class="partner-card">
+        <div class="card-logo"><span class="logo-fallback">DVS Australia</span></div>
+        <div class="card-name">DVS — Australia</div>
+        <div class="card-desc">Real-time validation of government-issued identity documents against Australia's Document Verification Service.</div>
+        <div class="card-tags"><span class="card-tag blue">National ID</span><span class="card-tag">APAC</span></div>
+      </div>
+      <div class="partner-card">
+        <div class="card-logo"><span class="logo-fallback">Home Affairs</span></div>
+        <div class="card-name">Dept. of Home Affairs — South Africa</div>
+        <div class="card-desc">Direct identity verification against South Africa's national identity authority for compliant onboarding in the region.</div>
+        <div class="card-tags"><span class="card-tag blue">National ID</span><span class="card-tag">Africa</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 4. DATA & VERIFICATION NETWORK ── -->
+  <div class="section-block" id="data">
+    <div class="section-top">
+      <div class="section-eyebrow">Data & verification network</div>
+      <h2 class="section-title">Global eKYC, KYB, and data coverage</h2>
+      <p class="section-body">A global network of data connections enabling non-document verification, business verification, and layered identity signals — across credit bureaus, telco providers, business registries, and sanctions databases. Coverage mapped by country and source type.</p>
+    </div>
+    <div style="background:var(--surface);border:1.5px dashed var(--border);border-radius:var(--radius-card);padding:48px;text-align:center">
+      <div style="font-size:16px;font-weight:700;color:var(--ink);margin-bottom:10px">Country coverage matrix — coming soon</div>
+      <div style="font-size:14px;color:var(--ink-muted);max-width:500px;margin:0 auto 20px">This section maps all eKYC, KYB, credit bureau, telco, and sanctions data sources to the countries and regions where each is available.</div>
+      <button class="btn-secondary" style="margin:0 auto">Contact us about specific coverage →</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div class="cta-band-inner">
+    <h2>Interested in partnering with Incode?</h2>
+    <p>Whether you're looking to resell, integrate, or build on the Incode platform, we'd like to talk.</p>
+    <div class="cta-group">
+      <button class="btn-primary">Become a partner</button>
+      <button class="btn-secondary">Request an integration</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function scrollToSection(id, btn) {
+    const el = document.getElementById(id);
+    if (el) {
+      const offset = 145;
+      const top = el.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+    document.querySelectorAll('.section-tab').forEach(t => t.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+  }
+
+  window.addEventListener('scroll', () => {
+    const sections = ['channel','tech','gov','data'];
+    const tabs = document.querySelectorAll('.section-tab');
+    const offset = 160;
+    let active = 0;
+    sections.forEach((id, i) => {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top <= offset) active = i;
+    });
+    tabs.forEach((t, i) => t.classList.toggle('active', i === active));
+  }, { passive: true });
+</script>
+</body>
+</html>
