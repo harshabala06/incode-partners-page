@@ -129,7 +129,7 @@ body{font-family:var(--f);background:var(--w);color:var(--ink);-webkit-font-smoo
 .tcard{background:var(--w);border:1.5px solid var(--bdr);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px;transition:border-color .18s,box-shadow .18s;}
 .tcard:hover{border-color:rgba(0,106,255,.28);box-shadow:0 2px 14px rgba(0,106,255,.06);}
 .tcard.t-hidden{display:none;}
-.tcard-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;}
+.tcard-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;flex-wrap:wrap;}.tcard-tags{display:flex;flex-wrap:wrap;gap:4px;justify-content:flex-end;flex:1;}
 .tmono{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;flex-shrink:0;}
 .cat-tag{font-size:10px;font-weight:700;padding:3px 8px;border-radius:100px;white-space:nowrap;}
 .tcard-name{font-size:13px;font-weight:700;color:var(--ink);}
@@ -329,50 +329,53 @@ body{font-family:var(--f);background:var(--w);color:var(--ink);-webkit-font-smoo
       <!-- Category filter bar -->
       <div class="tech-filter-bar" id="techFilters">
         <button class="f-btn f-all-on" data-tcat="all" onclick="toggleTechFilter('all',this)">All</button>
-        <button class="f-btn" data-tcat="IAM / CIAM" onclick="toggleTechFilter('IAM / CIAM',this)" data-bg="#EBF2FF" data-txt="#1A4BAA" data-bdr="#185FA5">IAM / CIAM</button>
+        <button class="f-btn" data-tcat="IAM" onclick="toggleTechFilter('IAM',this)" data-bg="#EBF2FF" data-txt="#1A4BAA" data-bdr="#185FA5">IAM</button>
+        <button class="f-btn" data-tcat="CIAM" onclick="toggleTechFilter('CIAM',this)" data-bg="#E6F1FB" data-txt="#0C447C" data-bdr="#0C447C">CIAM</button>
         <button class="f-btn" data-tcat="ITSM" onclick="toggleTechFilter('ITSM',this)" data-bg="#E1F5EE" data-txt="#085041" data-bdr="#0F6E56">ITSM</button>
         <button class="f-btn" data-tcat="ITDR" onclick="toggleTechFilter('ITDR',this)" data-bg="#E6F1FB" data-txt="#0C447C" data-bdr="#185FA5">ITDR</button>
         <button class="f-btn" data-tcat="Messaging" onclick="toggleTechFilter('Messaging',this)" data-bg="#EEEDFE" data-txt="#3C3489" data-bdr="#534AB7">Messaging</button>
-        <button class="f-btn" data-tcat="HR & ATS" onclick="toggleTechFilter('HR & ATS',this)" data-bg="#FAEEDA" data-txt="#633806" data-bdr="#854F0B">HR & ATS</button>
-        <button class="f-btn" data-tcat="CRM & E-Commerce" onclick="toggleTechFilter('CRM & E-Commerce',this)" data-bg="#EAF3DE" data-txt="#27500A" data-bdr="#3B6D11">CRM & E-Commerce</button>
+        <button class="f-btn" data-tcat="HRIS" onclick="toggleTechFilter('HRIS',this)" data-bg="#FAEEDA" data-txt="#633806" data-bdr="#854F0B">HRIS</button>
+        <button class="f-btn" data-tcat="ATS" onclick="toggleTechFilter('ATS',this)" data-bg="#FFF8EB" data-txt="#92400E" data-bdr="#D97706">ATS</button>
+        <button class="f-btn" data-tcat="CRM" onclick="toggleTechFilter('CRM',this)" data-bg="#EAF3DE" data-txt="#27500A" data-bdr="#3B6D11">CRM</button>
+        <button class="f-btn" data-tcat="E-Commerce" onclick="toggleTechFilter('E-Commerce',this)" data-bg="#EDFAF3" data-txt="#166534" data-bdr="#0F6E56">E-Commerce</button>
         <button class="f-btn" data-tcat="Age Verification" onclick="toggleTechFilter('Age Verification',this)" data-bg="#FAECE7" data-txt="#712B13" data-bdr="#993C1D">Age Verification</button>
         <button class="f-btn" data-tcat="Hardware" onclick="toggleTechFilter('Hardware',this)" data-bg="#F1EFE8" data-txt="#444441" data-bdr="#5F5E5A">Hardware</button>
       </div>
 
       <div class="tech-grid" id="techGrid">
 
-        <div class="tcard" data-tcat="IAM / CIAM" data-name="okta workforce">
-          <div class="tcard-top"><div class="tmono" style="background:#00297A">OK</div><span class="cat-tag" style="background:#EBF2FF;color:#1A4BAA;">IAM / CIAM</span></div>
+        <div class="tcard" data-tcat="IAM" data-name="okta workforce">
+          <div class="tcard-top"><div class="tmono" style="background:#00297A">OK</div><span class="cat-tag" style="background:#EBF2FF;color:#1A4BAA;">IAM</span></div>
           <div class="tcard-name">Okta Workforce</div>
           <div class="tcard-desc">Step-up biometric verification and account recovery in Okta workflows. Listed on OIN.</div>
         </div>
 
-        <div class="tcard" data-tcat="IAM / CIAM" data-name="microsoft entra">
-          <div class="tcard-top"><div class="tmono" style="background:#0078D4">ME</div><span class="cat-tag" style="background:#EBF2FF;color:#1A4BAA;">IAM / CIAM</span></div>
+        <div class="tcard" data-tcat="IAM" data-name="microsoft entra">
+          <div class="tcard-top"><div class="tmono" style="background:#0078D4">ME</div><span class="cat-tag" style="background:#EBF2FF;color:#1A4BAA;">IAM</span></div>
           <div class="tcard-name">Microsoft Entra</div>
           <div class="tcard-desc">Biometric verification native to Entra ID — protecting provisioning, MFA recovery, and privileged access.</div>
         </div>
 
-        <div class="tcard" data-tcat="IAM / CIAM" data-name="auth0">
-          <div class="tcard-top"><div class="tmono" style="background:#EB5424">A0</div><span class="cat-tag" style="background:#EBF2FF;color:#1A4BAA;">IAM / CIAM</span></div>
+        <div class="tcard" data-tcat="CIAM" data-name="auth0">
+          <div class="tcard-top"><div class="tmono" style="background:#EB5424">A0</div><span class="cat-tag" style="background:#E6F1FB;color:#0C447C;">CIAM</span></div>
           <div class="tcard-name">Auth0</div>
           <div class="tcard-desc">Incode IDV as step-up verification inside Auth0 consumer authentication flows.</div>
         </div>
 
-        <div class="tcard" data-tcat="IAM / CIAM" data-name="ping davinci">
-          <div class="tcard-top"><div class="tmono" style="background:#ED2226">PI</div><span class="cat-tag" style="background:#EBF2FF;color:#1A4BAA;">IAM / CIAM</span></div>
+        <div class="tcard" data-tcat="IAM CIAM" data-name="ping davinci">
+          <div class="tcard-top"><div class="tmono" style="background:#ED2226">PI</div><div class="tcard-tags"><span class="cat-tag" style="background:#EBF2FF;color:#1A4BAA;">IAM</span><span class="cat-tag" style="background:#E6F1FB;color:#0C447C;">CIAM</span></div></div>
           <div class="tcard-name">Ping DaVinci</div>
           <div class="tcard-desc">Incode IDV in PingOne DaVinci orchestration for workforce and consumer identity use cases.</div>
         </div>
 
-        <div class="tcard" data-tcat="IAM / CIAM" data-name="descope">
-          <div class="tcard-top"><div class="tmono" style="background:#3D5AF1">DS</div><span class="cat-tag" style="background:#EBF2FF;color:#1A4BAA;">IAM / CIAM</span></div>
+        <div class="tcard" data-tcat="CIAM" data-name="descope">
+          <div class="tcard-top"><div class="tmono" style="background:#3D5AF1">DS</div><span class="cat-tag" style="background:#E6F1FB;color:#0C447C;">CIAM</span></div>
           <div class="tcard-name">Descope</div>
           <div class="tcard-desc">No-code auth platform with Incode verification built in for customer-facing applications.</div>
         </div>
 
-        <div class="tcard" data-tcat="IAM / CIAM" data-name="openiam">
-          <div class="tcard-top"><div class="tmono" style="background:#1A73E8">OI</div><span class="cat-tag" style="background:#EBF2FF;color:#1A4BAA;">IAM / CIAM</span></div>
+        <div class="tcard" data-tcat="IAM" data-name="openiam">
+          <div class="tcard-top"><div class="tmono" style="background:#1A73E8">OI</div><span class="cat-tag" style="background:#EBF2FF;color:#1A4BAA;">IAM</span></div>
           <div class="tcard-name">OpenIAM</div>
           <div class="tcard-desc">IAM platform with Incode verification integrated into onboarding and access workflows.</div>
         </div>
@@ -407,26 +410,26 @@ body{font-family:var(--f);background:var(--w);color:var(--ink);-webkit-font-smoo
           <div class="tcard-desc">Identity verification via Teams bot and tab app. Notifications routed to channels by event type.</div>
         </div>
 
-        <div class="tcard" data-tcat="HR & ATS" data-name="workday">
-          <div class="tcard-top"><div class="tmono" style="background:#F4762A">WD</div><span class="cat-tag" style="background:#FAEEDA;color:#633806;">HR & ATS</span></div>
+        <div class="tcard" data-tcat="HRIS ATS" data-name="workday">
+          <div class="tcard-top"><div class="tmono" style="background:#F4762A">WD</div><div class="tcard-tags"><span class="cat-tag" style="background:#FAEEDA;color:#633806;">HRIS</span><span class="cat-tag" style="background:#FFF8EB;color:#92400E;">ATS</span></div></div>
           <div class="tcard-name">Workday</div>
           <div class="tcard-desc">Incode connected to the Workday employee lifecycle — confirming every new hire before access is granted.</div>
         </div>
 
-        <div class="tcard" data-tcat="HR & ATS" data-name="greenhouse">
-          <div class="tcard-top"><div class="tmono" style="background:#3AB549">GH</div><span class="cat-tag" style="background:#FAEEDA;color:#633806;">HR & ATS</span></div>
+        <div class="tcard" data-tcat="ATS" data-name="greenhouse">
+          <div class="tcard-top"><div class="tmono" style="background:#3AB549">GH</div><span class="cat-tag" style="background:#FFF8EB;color:#92400E;">ATS</span></div>
           <div class="tcard-name">Greenhouse</div>
           <div class="tcard-desc">Candidate identity verification — confirming the person who joins is the same person who interviewed.</div>
         </div>
 
-        <div class="tcard" data-tcat="CRM & E-Commerce" data-name="salesforce">
-          <div class="tcard-top"><div class="tmono" style="background:#00A1E0">SF</div><span class="cat-tag" style="background:#EAF3DE;color:#27500A;">CRM & E-Commerce</span></div>
+        <div class="tcard" data-tcat="CRM" data-name="salesforce">
+          <div class="tcard-top"><div class="tmono" style="background:#00A1E0">SF</div><span class="cat-tag" style="background:#EAF3DE;color:#27500A;">CRM</span></div>
           <div class="tcard-name">Salesforce</div>
           <div class="tcard-desc">Incode identity verification in Salesforce service and CRM workflows for customer identity assurance.</div>
         </div>
 
-        <div class="tcard" data-tcat="CRM & E-Commerce" data-name="shopify">
-          <div class="tcard-top"><div class="tmono" style="background:#96BF48;color:#111">SH</div><span class="cat-tag" style="background:#EAF3DE;color:#27500A;">CRM & E-Commerce</span></div>
+        <div class="tcard" data-tcat="E-Commerce" data-name="shopify">
+          <div class="tcard-top"><div class="tmono" style="background:#96BF48;color:#111">SH</div><span class="cat-tag" style="background:#EDFAF3;color:#166534;">E-Commerce</span></div>
           <div class="tcard-name">Shopify</div>
           <div class="tcard-desc">Age-gated commerce — verifying buyer identity and age at checkout for regulated products.</div>
         </div>
@@ -571,7 +574,8 @@ function toggleTechFilter(cat, btn) {
 function applyTechFilter() {
   let visible = 0;
   document.querySelectorAll('.tcard[data-tcat]').forEach(card => {
-    const show = activeTcats.size === 0 || activeTcats.has(card.dataset.tcat);
+    const cardCats = card.dataset.tcat.split(' ');
+    const show = activeTcats.size === 0 || cardCats.some(c => activeTcats.has(c));
     card.classList.toggle('t-hidden', !show);
     if (show) visible++;
   });
