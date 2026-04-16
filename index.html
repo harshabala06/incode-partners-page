@@ -331,11 +331,11 @@ body{font-family:var(--f);background:var(--w);color:var(--ink);-webkit-font-smoo
         <button class="f-btn f-all-on" data-tcat="all" onclick="toggleTechFilter('all',this)">All</button>
         <button class="f-btn" data-tcat="IAM" onclick="toggleTechFilter('IAM',this)" data-bg="#EBF2FF" data-txt="#1A4BAA" data-bdr="#185FA5">IAM</button>
         <button class="f-btn" data-tcat="CIAM" onclick="toggleTechFilter('CIAM',this)" data-bg="#E6F1FB" data-txt="#0C447C" data-bdr="#0C447C">CIAM</button>
-        <button class="f-btn" data-tcat="ITSM" onclick="toggleTechFilter('ITSM',this)" data-bg="#E1F5EE" data-txt="#085041" data-bdr="#0F6E56">ITSM</button>
-        <button class="f-btn" data-tcat="ITDR" onclick="toggleTechFilter('ITDR',this)" data-bg="#E6F1FB" data-txt="#0C447C" data-bdr="#185FA5">ITDR</button>
         <button class="f-btn" data-tcat="IGA" onclick="toggleTechFilter('IGA',this)" data-bg="#EEEDFE" data-txt="#3C3489" data-bdr="#534AB7">IGA</button>
-        <button class="f-btn" data-tcat="Video Conferencing" onclick="toggleTechFilter('Video Conferencing',this)" data-bg="#F1EFE8" data-txt="#444441" data-bdr="#5F5E5A">Video Conferencing</button>
+        <button class="f-btn" data-tcat="ITDR" onclick="toggleTechFilter('ITDR',this)" data-bg="#E6F1FB" data-txt="#0C447C" data-bdr="#185FA5">ITDR</button>
+        <button class="f-btn" data-tcat="ITSM" onclick="toggleTechFilter('ITSM',this)" data-bg="#E1F5EE" data-txt="#085041" data-bdr="#0F6E56">ITSM</button>
         <button class="f-btn" data-tcat="Messaging" onclick="toggleTechFilter('Messaging',this)" data-bg="#EEEDFE" data-txt="#3C3489" data-bdr="#534AB7">Messaging</button>
+        <button class="f-btn" data-tcat="Video Conferencing" onclick="toggleTechFilter('Video Conferencing',this)" data-bg="#F1EFE8" data-txt="#444441" data-bdr="#5F5E5A">Video Conferencing</button>
         <button class="f-btn" data-tcat="HRIS" onclick="toggleTechFilter('HRIS',this)" data-bg="#FAEEDA" data-txt="#633806" data-bdr="#854F0B">HRIS</button>
         <button class="f-btn" data-tcat="ATS" onclick="toggleTechFilter('ATS',this)" data-bg="#FFF8EB" data-txt="#92400E" data-bdr="#D97706">ATS</button>
         <button class="f-btn" data-tcat="CRM" onclick="toggleTechFilter('CRM',this)" data-bg="#EAF3DE" data-txt="#27500A" data-bdr="#3B6D11">CRM</button>
@@ -470,6 +470,24 @@ body{font-family:var(--f);background:var(--w);color:var(--ink);-webkit-font-smoo
           <div class="tcard-top"><div class="tmono" style="background:#00897B">GM</div><div class="tcard-tags"><span class="cat-tag" style="background:#F1EFE8;color:#444441;">Video Conferencing</span></div></div>
           <div class="tcard-name">Google Meet</div>
           <div class="tcard-desc">Identity verification gating for Google Meet — confirming participant identity before a meeting begins.</div>
+        </div>
+
+        <div class="tcard" data-tcat="ATS" data-name="lever">
+          <div class="tcard-top"><div class="tmono" style="background:#499D6A">LV</div><div class="tcard-tags"><span class="cat-tag" style="background:#FFF8EB;color:#92400E;">ATS</span></div></div>
+          <div class="tcard-name">Lever</div>
+          <div class="tcard-desc">Candidate identity verification inside Lever — confirming the person who joins is the same person who interviewed.</div>
+        </div>
+
+        <div class="tcard" data-tcat="ATS" data-name="ashby">
+          <div class="tcard-top"><div class="tmono" style="background:#1A1A1A">AB</div><div class="tcard-tags"><span class="cat-tag" style="background:#FFF8EB;color:#92400E;">ATS</span></div></div>
+          <div class="tcard-name">Ashby</div>
+          <div class="tcard-desc">Candidate identity verification inside Ashby for high-growth recruiting teams.</div>
+        </div>
+
+        <div class="tcard" data-tcat="IAM" data-name="microsoft active directory">
+          <div class="tcard-top"><div class="tmono" style="background:#0078D4">AD</div><div class="tcard-tags"><span class="cat-tag" style="background:#EBF2FF;color:#1A4BAA;">IAM</span></div></div>
+          <div class="tcard-name">Microsoft Active Directory</div>
+          <div class="tcard-desc">Incode biometric verification integrated into Active Directory workflows — protecting account recovery, privileged access, and high-risk actions.</div>
         </div>
 
         <div class="t-no-results" id="t-no-results">No integrations match the selected filters.</div>
