@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Incode Marketplace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#006AFF;--bl:rgba(0,106,255,.08);--ink:#0D0D0D;--soft:#505050;--muted:#909090;--w:#fff;--surf:#F7F7F8;--bdr:#EBEBEB;--rb:9px;--rc:14px;--rt:100px;--f:'Rethink Sans',sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--f);background:var(--w);color:var(--ink);-webkit-font-smoothing:antialiased;}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--bdr);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 56px;}
+.logo{font-size:18px;font-weight:800;letter-spacing:-.5px;color:var(--ink);text-decoration:none;}
+.nav-right{display:flex;gap:10px;align-items:center;}
+.nav-link{font-size:13px;font-weight:500;color:var(--soft);background:none;border:none;cursor:pointer;font-family:var(--f);padding:8px 14px;border-radius:var(--rb);transition:background .15s;}
+.nav-link:hover{background:var(--surf);}
+.nav-btn{padding:9px 22px;background:var(--blue);color:#fff;border:none;border-radius:var(--rb);font-size:13px;font-weight:600;cursor:pointer;font-family:var(--f);}
+
+/* HERO */
+.hero{background:#FAFAF8;border-bottom:1px solid var(--bdr);padding:88px 56px 72px;}
+.hero-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+.hero-eyebrow{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--blue);margin-bottom:18px;}
+.hero h1{font-size:clamp(32px,4.5vw,54px);font-weight:800;letter-spacing:-2px;line-height:1.05;color:var(--ink);margin-bottom:18px;}
+.hero h1 em{color:var(--blue);font-style:normal;}
+.hero-sub{font-size:16px;line-height:1.8;color:var(--soft);margin-bottom:28px;}
+.hero-search{position:relative;max-width:400px;}
+.hero-search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--muted);fill:none;}
+.hero-search input{width:100%;height:46px;padding:0 16px 0 42px;border:1.5px solid var(--bdr);border-radius:var(--rb);font-size:14px;font-family:var(--f);color:var(--ink);background:var(--w);outline:none;transition:border-color .15s;}
+.hero-search input:focus{border-color:var(--blue);}
+.hero-search input::placeholder{color:var(--muted);}
+.hero-stats{display:flex;gap:28px;flex-wrap:wrap;}
+.hero-stat{text-align:center;}
+.hero-stat-num{font-size:26px;font-weight:800;letter-spacing:-1px;color:var(--ink);}
+.hero-stat-num em{color:var(--blue);font-style:normal;}
+.hero-stat-label{font-size:11px;color:var(--muted);margin-top:3px;}
+.hero-right{display:flex;flex-direction:column;gap:12px;}
+.hero-cat-preview{display:flex;flex-wrap:wrap;gap:8px;}
+.hcp-tag{padding:7px 14px;border-radius:var(--rt);font-size:12px;font-weight:600;border:1.5px solid var(--bdr);background:var(--w);color:var(--muted);}
+
+/* MARKETPLACE */
+.marketplace{padding:64px 56px 80px;background:var(--w);}
+.mp-inner{max-width:1080px;margin:0 auto;}
+
+/* FILTER BAR */
+.mp-controls{display:flex;align-items:center;gap:10px;margin-bottom:28px;flex-wrap:wrap;}
+.search-box{position:relative;flex:0 0 220px;}
+.search-box svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);width:14px;height:14px;stroke:var(--muted);fill:none;}
+.search-box input{width:100%;height:36px;padding:0 12px 0 32px;border:1.5px solid var(--bdr);border-radius:var(--rb);font-size:13px;font-family:var(--f);color:var(--ink);background:var(--surf);outline:none;transition:border-color .15s;}
+.search-box input:focus{border-color:var(--blue);background:var(--w);}
+.search-box input::placeholder{color:var(--muted);}
+.filter-bar{display:flex;flex-wrap:wrap;gap:6px;}
+.f-btn{padding:6px 14px;border-radius:var(--rt);font-size:12px;font-weight:600;border:1.5px solid var(--bdr);background:var(--w);color:var(--muted);cursor:pointer;transition:all .15s;font-family:var(--f);}
+.f-btn:hover{border-color:var(--ink);color:var(--ink);}
+.f-btn{position:relative;}
+.f-btn .tip{display:none;position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:11px;font-weight:500;padding:5px 10px;border-radius:6px;white-space:nowrap;pointer-events:none;z-index:100;}
+.f-btn .tip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:4px solid transparent;border-top-color:var(--ink);}
+.f-btn:hover .tip{display:block;}
+.f-btn.f-all-on{background:var(--ink);border-color:var(--ink);color:#fff;}
+.mp-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+.mp-count{font-size:13px;color:var(--muted);}
+.mp-count strong{color:var(--ink);font-weight:700;}
+
+/* INTEGRATION GRID */
+.int-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;}
+.icard{background:var(--w);border:1.5px solid var(--bdr);border-radius:var(--rc);padding:20px;display:flex;flex-direction:column;gap:10px;}
+.icard.i-hidden{display:none;}
+.icard-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;}
+.imono{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;flex-shrink:0;}
+.icard-tags{display:flex;flex-wrap:wrap;gap:4px;justify-content:flex-end;flex:1;}
+.cat-tag{font-size:10px;font-weight:700;padding:3px 8px;border-radius:var(--rt);white-space:nowrap;}
+.icard-logo{height:26px;display:flex;align-items:center;}
+.icard-logo img{max-height:20px;max-width:80px;object-fit:contain;object-position:left;}
+.icard-name{font-size:13px;font-weight:700;color:var(--ink);}
+.no-results{text-align:center;padding:64px 0;color:var(--muted);font-size:14px;display:none;grid-column:1/-1;}
+
+/* COLLECTIONS STRIP */
+.collections{padding:0 56px 64px;background:var(--w);border-top:1px solid var(--bdr);}
+.coll-inner{max-width:1080px;margin:0 auto;padding-top:56px;}
+.coll-eyebrow{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--blue);margin-bottom:14px;}
+.coll-title{font-size:clamp(20px,2.5vw,28px);font-weight:800;letter-spacing:-.5px;margin-bottom:32px;}
+.coll-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.coll-card{border:1.5px solid var(--bdr);border-radius:var(--rc);padding:22px;cursor:pointer;transition:border-color .18s,box-shadow .18s;}
+.coll-card:hover{border-color:rgba(0,106,255,.3);box-shadow:0 2px 14px rgba(0,106,255,.06);}
+.coll-icon{width:38px;height:38px;border-radius:10px;background:var(--bl);display:flex;align-items:center;justify-content:center;margin-bottom:12px;}
+.coll-icon svg{width:18px;height:18px;stroke:var(--blue);fill:none;}
+.coll-name{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:5px;}
+.coll-desc{font-size:12px;color:var(--muted);line-height:1.6;}
+.coll-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:10px;}
+.coll-tag-pill{font-size:10px;font-weight:600;padding:2px 8px;border-radius:var(--rt);background:var(--surf);color:var(--muted);}
+
+/* BOTTOM CTA */
+.bottom-cta{background:#0A0A0A;padding:80px 56px;}
+.bc-inner{max-width:1080px;margin:0 auto;}
+.bc-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.bc-card{background:#141414;border:1px solid #1E1E1E;border-radius:var(--rc);padding:32px;}
+.bc-icon{width:44px;height:44px;border-radius:11px;background:rgba(0,106,255,.12);display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+.bc-icon svg{width:20px;height:20px;stroke:var(--blue);fill:none;}
+.bc-card h3{font-size:18px;font-weight:800;letter-spacing:-.3px;color:#fff;margin-bottom:8px;}
+.bc-card p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.7;margin-bottom:20px;}
+.btn-bc-p{padding:11px 22px;background:var(--blue);color:#fff;border:none;border-radius:var(--rb);font-size:13px;font-weight:600;cursor:pointer;font-family:var(--f);}
+.btn-bc-p:hover{opacity:.88;}
+.btn-bc-s{padding:11px 22px;background:transparent;color:rgba(255,255,255,.6);border:1.5px solid rgba(255,255,255,.15);border-radius:var(--rb);font-size:13px;font-weight:500;cursor:pointer;font-family:var(--f);}
+.btn-bc-s:hover{border-color:rgba(255,255,255,.4);color:#fff;}
+
+@media(max-width:1000px){.int-grid{grid-template-columns:repeat(3,minmax(0,1fr));}.hero-inner{grid-template-columns:1fr;gap:36px;}.coll-grid{grid-template-columns:1fr 1fr;}.bc-grid{grid-template-columns:1fr;}}
+@media(max-width:700px){.int-grid{grid-template-columns:repeat(2,minmax(0,1fr));}.coll-grid{grid-template-columns:1fr;}.nav,.hero,.marketplace,.collections,.bottom-cta{padding-left:24px;padding-right:24px;}.search-box{flex:1 1 100%;}}
+
+/* GLOSSARY */
+.glossary{padding:0 56px 64px;background:var(--w);border-top:1px solid var(--bdr);}
+.gloss-inner{max-width:1080px;margin:0 auto;padding-top:56px;}
+.gloss-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.gloss-item{display:flex;align-items:flex-start;gap:14px;padding:18px;border:1.5px solid var(--bdr);border-radius:var(--rc);}
+.gloss-tag{font-size:11px;font-weight:700;padding:5px 10px;border-radius:var(--rt);white-space:nowrap;flex-shrink:0;}
+.gloss-full{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px;}
+.gloss-desc{font-size:12px;color:var(--muted);line-height:1.65;}
+@media(max-width:700px){.gloss-grid{grid-template-columns:1fr;}.glossary{padding-left:24px;padding-right:24px;}}
+.not-exhaustive{font-size:12px;color:var(--muted);margin-bottom:16px;}
+
+/* TECH PARTNER SECTION */
+.tech-partner-section{padding:80px 56px;background:#FAFAF8;border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);}
+.tp-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+.tp-benefits{display:flex;flex-direction:column;gap:20px;}
+.tp-benefit{display:flex;align-items:flex-start;gap:12px;}
+.tp-b-icon{width:32px;height:32px;border-radius:8px;background:var(--bl);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.tp-b-icon svg{width:16px;height:16px;}
+.tp-b-title{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px;}
+.tp-b-desc{font-size:12px;color:var(--muted);line-height:1.6;}
+.btn-dark{padding:13px 26px;background:var(--ink);color:#fff;border:none;border-radius:var(--rb);font-size:14px;font-weight:600;cursor:pointer;font-family:var(--f);}
+.btn-dark:hover{opacity:.85;}
+.btn-outline{padding:13px 26px;background:transparent;color:var(--ink);border:1.5px solid var(--bdr);border-radius:var(--rb);font-size:14px;font-weight:500;cursor:pointer;font-family:var(--f);}
+.btn-outline:hover{border-color:var(--ink);}
+@media(max-width:1000px){.tp-inner{grid-template-columns:1fr;gap:40px;}}
+@media(max-width:700px){.tech-partner-section{padding-left:24px;padding-right:24px;}}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="logo" href="#">incode</a>
+  <div class="nav-right">
+    <button class="nav-link" onclick="document.getElementById('marketplace').scrollIntoView({behavior:'smooth'})">Browse integrations</button>
+    <button class="nav-btn">Request an integration</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Incode Marketplace</div>
+      <h1>Verified identity,<br>built into the<br>tools you <em>already use.</em></h1>
+      <p class="hero-sub">Pre-built integrations with the platforms your enterprise already runs on.</p>
+      <div class="hero-search">
+        <svg viewBox="0 0 16 16"><circle cx="6.5" cy="6.5" r="4.5" stroke-width="1.5"/><path d="M10 10L14 14" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <input type="text" id="hero-search" placeholder="Search integrations..." oninput="syncSearch(this.value)">
+      </div>
+    </div>
+    <div>
+      <div class="hero-stats" style="margin-bottom:28px;">
+        <div class="hero-stat"><div class="hero-stat-num"><em>30+</em></div><div class="hero-stat-label">Integrations available</div></div>
+        <div class="hero-stat"><div class="hero-stat-num"><em>10+</em></div><div class="hero-stat-label">Categories</div></div>
+        <div class="hero-stat"><div class="hero-stat-num"><em>50+</em></div><div class="hero-stat-label">Partners in the ecosystem</div></div>
+      </div>
+      <div class="hero-cat-preview">
+        <span class="hcp-tag">IAM</span>
+        <span class="hcp-tag">CIAM</span>
+        <span class="hcp-tag">IGA</span>
+        <span class="hcp-tag">ITDR</span>
+        <span class="hcp-tag">ITSM</span>
+        <span class="hcp-tag">Messaging</span>
+        <span class="hcp-tag">Video Conferencing</span>
+        <span class="hcp-tag">HRIS</span>
+        <span class="hcp-tag">ATS</span>
+        <span class="hcp-tag">CRM</span>
+        <span class="hcp-tag">E-Commerce</span>
+        <span class="hcp-tag">Age Verification</span>
+        <span class="hcp-tag">Hardware</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GLOSSARY -->
+<div class="glossary">
+  <div class="gloss-inner">
+    <h2 class="coll-title" style="font-size:clamp(20px,2.5vw,28px);font-weight:800;letter-spacing:-.5px;margin-bottom:28px;">Categories</h2>
+    <div class="gloss-grid">
+      <div class="gloss-item">
+        <div class="gloss-tag" style="background:#EBF2FF;color:#1A4BAA;">IAM</div>
+        <div class="gloss-body">
+          <div class="gloss-full">Identity & Access Management</div>
+          <div class="gloss-desc">Employees lose access, get locked out, or have accounts compromised. Incode adds a verification layer to the moments that matter most, including account recovery, MFA reset, and privileged access requests.</div>
+        </div>
+      </div>
+      <div class="gloss-item">
+        <div class="gloss-tag" style="background:#E6F1FB;color:#0C447C;">CIAM</div>
+        <div class="gloss-body">
+          <div class="gloss-full">Customer Identity & Access Management</div>
+          <div class="gloss-desc">Consumer accounts are a primary target for takeover. Incode steps in at high-risk moments in the customer journey, such as onboarding, account changes, and step-up authentication, without disrupting the experience.</div>
+        </div>
+      </div>
+      <div class="gloss-item">
+        <div class="gloss-tag" style="background:#EEEDFE;color:#3C3489;">IGA</div>
+        <div class="gloss-body">
+          <div class="gloss-full">Identity Governance & Administration</div>
+          <div class="gloss-desc">Governance decisions are only as reliable as the identity behind them. Incode ensures the right person is confirmed before access is certified, provisioned, or escalated.</div>
+        </div>
+      </div>
+      <div class="gloss-item">
+        <div class="gloss-tag" style="background:#E6F1FB;color:#0C447C;">ITDR</div>
+        <div class="gloss-body">
+          <div class="gloss-full">Identity Threat Detection & Response</div>
+          <div class="gloss-desc">When a threat is detected, identity is usually the entry point. Incode closes the gap by triggering real-time re-verification when suspicious activity is flagged.</div>
+        </div>
+      </div>
+      <div class="gloss-item">
+        <div class="gloss-tag" style="background:#E1F5EE;color:#085041;">ITSM</div>
+        <div class="gloss-body">
+          <div class="gloss-full">IT Service Management</div>
+          <div class="gloss-desc">Social engineering attacks target help desk agents every day. Incode handles identity verification before a request is acted on, so your team never has to make that call themselves.</div>
+        </div>
+      </div>
+      <div class="gloss-item">
+        <div class="gloss-tag" style="background:#EEEDFE;color:#3C3489;">Messaging</div>
+        <div class="gloss-body">
+          <div class="gloss-full">Messaging & Collaboration</div>
+          <div class="gloss-desc">Sensitive workflows happen inside messaging tools. Incode lets teams trigger and complete identity verification without leaving the platform they are already working in.</div>
+        </div>
+      </div>
+      <div class="gloss-item">
+        <div class="gloss-tag" style="background:#F1EFE8;color:#444441;">Video Conferencing</div>
+        <div class="gloss-body">
+          <div class="gloss-full">Video Conferencing</div>
+          <div class="gloss-desc">AI-generated deepfakes make it easy to impersonate someone on a call. Incode verifies participant identity before they join, ensuring the person on screen is who they claim to be.</div>
+        </div>
+      </div>
+      <div class="gloss-item">
+        <div class="gloss-tag" style="background:#FAEEDA;color:#633806;">HRIS</div>
+        <div class="gloss-body">
+          <div class="gloss-full">Human Resource Information System</div>
+          <div class="gloss-desc">The moment someone joins the organisation is when identity risk is highest. Incode ensures the person who shows up on day one is the person you hired.</div>
+        </div>
+      </div>
+      <div class="gloss-item">
+        <div class="gloss-tag" style="background:#FFF8EB;color:#92400E;">ATS</div>
+        <div class="gloss-body">
+          <div class="gloss-full">Applicant Tracking System</div>
+          <div class="gloss-desc">North Korean IT workers and other fraudulent applicants have made candidate identity a real risk. Incode confirms the candidate appearing in the hiring cycle is who they say they are.</div>
+        </div>
+      </div>
+      <div class="gloss-item">
+        <div class="gloss-tag" style="background:#EAF3DE;color:#27500A;">CRM</div>
+        <div class="gloss-body">
+          <div class="gloss-full">Customer Relationship Management</div>
+          <div class="gloss-desc">Trigger identity verification directly from within your CRM workflows, adding assurance to customer service interactions where it matters most.</div>
+        </div>
+      </div>
+      <div class="gloss-item">
+        <div class="gloss-tag" style="background:#EDFAF3;color:#166534;">E-Commerce</div>
+        <div class="gloss-body">
+          <div class="gloss-full">E-Commerce</div>
+          <div class="gloss-desc">Selling age-restricted or high-value products online requires more than a checkbox. Incode verifies buyer identity and age at the point of purchase.</div>
+        </div>
+      </div>
+      <div class="gloss-item">
+        <div class="gloss-tag" style="background:#FAECE7;color:#712B13;">Age Verification</div>
+        <div class="gloss-body">
+          <div class="gloss-full">Age Verification</div>
+          <div class="gloss-desc">Help meet age-related compliance and regulatory requirements globally, with verification that holds up across jurisdictions and use cases.</div>
+        </div>
+      </div>
+      <div class="gloss-item">
+        <div class="gloss-tag" style="background:#F1EFE8;color:#444441;">Hardware</div>
+        <div class="gloss-body">
+          <div class="gloss-full">Hardware & Kiosk</div>
+          <div class="gloss-desc">For organisations that need identity confirmed in person, Incode works with physical document scanning hardware at kiosks and points of service.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- MARKETPLACE GRID -->
+<div class="marketplace" id="marketplace">
+  <div class="mp-inner">
+
+    <div class="mp-controls">
+      <div class="search-box">
+        <svg viewBox="0 0 14 14"><circle cx="5.5" cy="5.5" r="4" stroke-width="1.4"/><path d="M8.5 8.5L12 12" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <input type="text" id="grid-search" placeholder="Search integrations..." oninput="syncSearch(this.value)">
+      </div>
+      <div class="filter-bar" id="filters">
+        <button class="f-btn f-all-on" data-tcat="all" onclick="toggleFilter('all',this)">All</button>
+        <button class="f-btn" data-tcat="IAM" onclick="toggleFilter('IAM',this)" data-bg="#EBF2FF" data-txt="#1A4BAA" data-bdr="#185FA5"><span class="tip">Identity &amp; Access Management</span>IAM</button>
+        <button class="f-btn" data-tcat="CIAM" onclick="toggleFilter('CIAM',this)" data-bg="#E6F1FB" data-txt="#0C447C" data-bdr="#378ADD"><span class="tip">Customer Identity &amp; Access Management</span>CIAM</button>
+        <button class="f-btn" data-tcat="IGA" onclick="toggleFilter('IGA',this)" data-bg="#EEEDFE" data-txt="#3C3489" data-bdr="#534AB7"><span class="tip">Identity Governance &amp; Administration</span>IGA</button>
+        <button class="f-btn" data-tcat="ITDR" onclick="toggleFilter('ITDR',this)" data-bg="#E6F1FB" data-txt="#0C447C" data-bdr="#185FA5"><span class="tip">Identity Threat Detection &amp; Response</span>ITDR</button>
+        <button class="f-btn" data-tcat="ITSM" onclick="toggleFilter('ITSM',this)" data-bg="#E1F5EE" data-txt="#085041" data-bdr="#0F6E56"><span class="tip">IT Service Management</span>ITSM</button>
+        <button class="f-btn" data-tcat="Messaging" onclick="toggleFilter('Messaging',this)" data-bg="#EEEDFE" data-txt="#3C3489" data-bdr="#534AB7"><span class="tip">Messaging &amp; Collaboration</span>Messaging</button>
+        <button class="f-btn" data-tcat="Video Conferencing" onclick="toggleFilter('Video Conferencing',this)" data-bg="#F1EFE8" data-txt="#444441" data-bdr="#5F5E5A"><span class="tip">Video Conferencing</span>Video Conferencing</button>
+        <button class="f-btn" data-tcat="HRIS" onclick="toggleFilter('HRIS',this)" data-bg="#FAEEDA" data-txt="#633806" data-bdr="#854F0B"><span class="tip">Human Resource Information System</span>HRIS</button>
+        <button class="f-btn" data-tcat="ATS" onclick="toggleFilter('ATS',this)" data-bg="#FFF8EB" data-txt="#92400E" data-bdr="#D97706"><span class="tip">Applicant Tracking System</span>ATS</button>
+        <button class="f-btn" data-tcat="CRM" onclick="toggleFilter('CRM',this)" data-bg="#EAF3DE" data-txt="#27500A" data-bdr="#3B6D11"><span class="tip">Customer Relationship Management</span>CRM</button>
+        <button class="f-btn" data-tcat="E-Commerce" onclick="toggleFilter('E-Commerce',this)" data-bg="#EDFAF3" data-txt="#166534" data-bdr="#0F6E56"><span class="tip">E-Commerce</span>E-Commerce</button>
+        <button class="f-btn" data-tcat="Age Verification" onclick="toggleFilter('Age Verification',this)" data-bg="#FAECE7" data-txt="#712B13" data-bdr="#993C1D"><span class="tip">Age Verification</span>Age Verification</button>
+        <button class="f-btn" data-tcat="Hardware" onclick="toggleFilter('Hardware',this)" data-bg="#F1EFE8" data-txt="#444441" data-bdr="#5F5E5A"><span class="tip">Hardware &amp; Kiosk</span>Hardware</button>
+      </div></div>
+
+    <p class="not-exhaustive">This is a sample list of integrations. Reach out if you are looking for something specific — we may already have it.</p>
+    <div class="mp-meta">
+      <span class="mp-count"><strong id="count">30</strong> integrations</span>
+    </div>
+
+    <div class="int-grid" id="intGrid">
+
+      <!-- IAM -->
+      <div class="icard" data-tcat="IAM" data-name="okta workforce">
+        <div class="icard-top"><div class="imono" style="background:#00297A">OK</div><div class="icard-tags"><span class="cat-tag" style="background:#EBF2FF;color:#1A4BAA;">IAM</span></div></div>
+        <div class="icard-name">Okta Workforce</div>
+      </div>
+
+      <div class="icard" data-tcat="IAM" data-name="microsoft entra">
+        <div class="icard-top"><div class="imono" style="background:#0078D4">ME</div><div class="icard-tags"><span class="cat-tag" style="background:#EBF2FF;color:#1A4BAA;">IAM</span></div></div>
+        <div class="icard-name">Microsoft Entra</div>
+      </div>
+
+      <div class="icard" data-tcat="IAM" data-name="microsoft active directory">
+        <div class="icard-top"><div class="imono" style="background:#0078D4">AD</div><div class="icard-tags"><span class="cat-tag" style="background:#EBF2FF;color:#1A4BAA;">IAM</span></div></div>
+        <div class="icard-name">Microsoft Active Directory</div>
+      </div>
+
+      <div class="icard" data-tcat="IAM" data-name="openiam">
+        <div class="icard-top"><div class="imono" style="background:#1A73E8">OI</div><div class="icard-tags"><span class="cat-tag" style="background:#EBF2FF;color:#1A4BAA;">IAM</span></div></div>
+        <div class="icard-name">OpenIAM</div>
+      </div>
+
+      <!-- CIAM -->
+      <div class="icard" data-tcat="CIAM" data-name="auth0">
+        <div class="icard-top"><div class="imono" style="background:#EB5424">A0</div><div class="icard-tags"><span class="cat-tag" style="background:#E6F1FB;color:#0C447C;">CIAM</span></div></div>
+        <div class="icard-name">Auth0</div>
+      </div>
+
+      <div class="icard" data-tcat="CIAM" data-name="descope">
+        <div class="icard-top"><div class="imono" style="background:#3D5AF1">DS</div><div class="icard-tags"><span class="cat-tag" style="background:#E6F1FB;color:#0C447C;">CIAM</span></div></div>
+        <div class="icard-name">Descope</div>
+      </div>
+
+      <!-- IAM + CIAM -->
+      <div class="icard" data-tcat="IAM CIAM" data-name="ping davinci">
+        <div class="icard-top"><div class="imono" style="background:#ED2226">PI</div><div class="icard-tags"><span class="cat-tag" style="background:#EBF2FF;color:#1A4BAA;">IAM</span><span class="cat-tag" style="background:#E6F1FB;color:#0C447C;">CIAM</span></div></div>
+        <div class="icard-name">Ping DaVinci</div>
+      </div>
+
+      <!-- IGA -->
+      <div class="icard" data-tcat="IGA" data-name="sailpoint">
+        <div class="icard-top"><div class="imono" style="background:#0033A0">SP</div><div class="icard-tags"><span class="cat-tag" style="background:#EEEDFE;color:#3C3489;">IGA</span></div></div>
+        <div class="icard-name">SailPoint</div>
+      </div>
+
+      <!-- ITDR -->
+      <div class="icard" data-tcat="ITDR" data-name="microsoft defender">
+        <div class="icard-top"><div class="imono" style="background:#0078D4">MD</div><div class="icard-tags"><span class="cat-tag" style="background:#E6F1FB;color:#0C447C;">ITDR</span></div></div>
+        <div class="icard-name">Microsoft Defender</div>
+      </div>
+
+      <!-- ITSM -->
+      <div class="icard" data-tcat="ITSM" data-name="servicenow">
+        <div class="icard-top"><div class="imono" style="background:#62D84E;color:#111">SN</div><div class="icard-tags"><span class="cat-tag" style="background:#E1F5EE;color:#085041;">ITSM</span></div></div>
+        <div class="icard-name">ServiceNow</div>
+      </div>
+
+      <div class="icard" data-tcat="ITSM" data-name="jira service management">
+        <div class="icard-top"><div class="imono" style="background:#0052CC">JR</div><div class="icard-tags"><span class="cat-tag" style="background:#E1F5EE;color:#085041;">ITSM</span></div></div>
+        <div class="icard-name">Jira Service Management</div>
+      </div>
+
+      <!-- Messaging -->
+      <div class="icard" data-tcat="Messaging" data-name="slack">
+        <div class="icard-top"><div class="imono" style="background:#4A154B">SL</div><div class="icard-tags"><span class="cat-tag" style="background:#EEEDFE;color:#3C3489;">Messaging</span></div></div>
+        <div class="icard-name">Slack</div>
+      </div>
+
+      <!-- Video Conferencing -->
+      <div class="icard" data-tcat="Video Conferencing" data-name="zoom">
+        <div class="icard-top"><div class="imono" style="background:#2D8CFF">ZM</div><div class="icard-tags"><span class="cat-tag" style="background:#F1EFE8;color:#444441;">Video Conferencing</span></div></div>
+        <div class="icard-name">Zoom</div>
+      </div>
+
+      <div class="icard" data-tcat="Video Conferencing" data-name="microsoft teams">
+        <div class="icard-top"><div class="imono" style="background:#464EB8">MT</div><div class="icard-tags"><span class="cat-tag" style="background:#F1EFE8;color:#444441;">Video Conferencing</span></div></div>
+        <div class="icard-name">Microsoft Teams</div>
+      </div>
+
+      <div class="icard" data-tcat="Video Conferencing" data-name="google meet">
+        <div class="icard-top"><div class="imono" style="background:#00897B">GM</div><div class="icard-tags"><span class="cat-tag" style="background:#F1EFE8;color:#444441;">Video Conferencing</span></div></div>
+        <div class="icard-name">Google Meet</div>
+      </div>
+
+      <!-- HRIS + ATS -->
+      <div class="icard" data-tcat="HRIS ATS" data-name="workday">
+        <div class="icard-top"><div class="imono" style="background:#F4762A">WD</div><div class="icard-tags"><span class="cat-tag" style="background:#FAEEDA;color:#633806;">HRIS</span><span class="cat-tag" style="background:#FFF8EB;color:#92400E;">ATS</span></div></div>
+        <div class="icard-name">Workday</div>
+      </div>
+
+      <!-- ATS -->
+      <div class="icard" data-tcat="ATS" data-name="greenhouse">
+        <div class="icard-top"><div class="imono" style="background:#3AB549">GH</div><div class="icard-tags"><span class="cat-tag" style="background:#FFF8EB;color:#92400E;">ATS</span></div></div>
+        <div class="icard-name">Greenhouse</div>
+      </div>
+
+      <div class="icard" data-tcat="ATS" data-name="lever">
+        <div class="icard-top"><div class="imono" style="background:#499D6A">LV</div><div class="icard-tags"><span class="cat-tag" style="background:#FFF8EB;color:#92400E;">ATS</span></div></div>
+        <div class="icard-name">Lever</div>
+      </div>
+
+      <div class="icard" data-tcat="ATS" data-name="ashby">
+        <div class="icard-top"><div class="imono" style="background:#1A1A1A">AB</div><div class="icard-tags"><span class="cat-tag" style="background:#FFF8EB;color:#92400E;">ATS</span></div></div>
+        <div class="icard-name">Ashby</div>
+      </div>
+
+      <!-- CRM -->
+      <div class="icard" data-tcat="CRM" data-name="salesforce">
+        <div class="icard-top"><div class="imono" style="background:#00A1E0">SF</div><div class="icard-tags"><span class="cat-tag" style="background:#EAF3DE;color:#27500A;">CRM</span></div></div>
+        <div class="icard-name">Salesforce</div>
+      </div>
+
+      <!-- E-Commerce -->
+      <div class="icard" data-tcat="E-Commerce" data-name="shopify">
+        <div class="icard-top"><div class="imono" style="background:#96BF48;color:#111">SH</div><div class="icard-tags"><span class="cat-tag" style="background:#EDFAF3;color:#166534;">E-Commerce</span></div></div>
+        <div class="icard-name">Shopify</div>
+      </div>
+
+      <!-- Age Verification -->
+      <div class="icard" data-tcat="Age Verification" data-name="k-id">
+        <div class="icard-top"><div class="imono" style="background:#6C47FF">KI</div><div class="icard-tags"><span class="cat-tag" style="background:#FAECE7;color:#712B13;">Age Verification</span></div></div>
+        <div class="icard-name">K-ID</div>
+      </div>
+
+      <!-- Hardware -->
+      <div class="icard" data-tcat="Hardware" data-name="desko">
+        <div class="icard-top"><div class="imono" style="background:#333">DE</div><div class="icard-tags"><span class="cat-tag" style="background:#F1EFE8;color:#444441;">Hardware</span></div></div>
+        <div class="icard-name">Desko</div>
+      </div>
+
+      <div class="icard" data-tcat="Hardware" data-name="epson">
+        <div class="icard-top"><div class="imono" style="background:#003087">EP</div><div class="icard-tags"><span class="cat-tag" style="background:#F1EFE8;color:#444441;">Hardware</span></div></div>
+        <div class="icard-name">Epson</div>
+      </div>
+
+      <div class="no-results" id="no-results">No integrations match your search or filters.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- TECH PARTNER CTA -->
+<div class="tech-partner-section">
+  <div class="tp-inner">
+    <div class="tp-left">
+      <div style="color:var(--blue);font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;">Build with Incode</div>
+      <h2 style="font-size:clamp(22px,3vw,32px);font-weight:800;letter-spacing:-.6px;margin-bottom:12px;">Are you a technology partner?</h2>
+      <p style="font-size:15px;color:var(--soft);line-height:1.75;max-width:480px;margin-bottom:28px;">Build a native integration with Incode and get listed in the marketplace. Reach enterprise customers across financial services, healthcare, government, and beyond — with co-marketing, technical enablement, and joint GTM support from the Incode partnerships team.</p>
+      <button class="btn-dark">Become a technology partner</button>
+    </div>
+    <div class="tp-benefits">
+      <div class="tp-benefit"><div class="tp-b-icon"><svg viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="var(--blue)" stroke-width="1.3"/><path d="M6 9l2 2 4-4" stroke="var(--blue)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div class="tp-b-title">Marketplace listing</div><div class="tp-b-desc">Get discovered by Incode's enterprise customer base across every industry we serve.</div></div></div>
+      <div class="tp-benefit"><div class="tp-b-icon"><svg viewBox="0 0 18 18" fill="none"><path d="M9 2l2 5h5l-4 3 1.5 5L9 12l-4.5 3L6 10 2 7h5z" stroke="var(--blue)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div class="tp-b-title">Co-marketing support</div><div class="tp-b-desc">Joint press releases, case studies, and demand generation campaigns to your shared audience.</div></div></div>
+      <div class="tp-benefit"><div class="tp-b-icon"><svg viewBox="0 0 18 18" fill="none"><rect x="2" y="3" width="14" height="12" rx="2" stroke="var(--blue)" stroke-width="1.3"/><path d="M6 7h6M6 10h4" stroke="var(--blue)" stroke-width="1.3" stroke-linecap="round"/></svg></div><div><div class="tp-b-title">Technical enablement</div><div class="tp-b-desc">Sandbox access, integration documentation, and dedicated support to help you build and ship faster.</div></div></div>
+      <div class="tp-benefit"><div class="tp-b-icon"><svg viewBox="0 0 18 18" fill="none"><path d="M3 9c0-3.3 2.7-6 6-6s6 2.7 6 6-2.7 6-6 6" stroke="var(--blue)" stroke-width="1.3" stroke-linecap="round"/><path d="M9 6v3l2 2" stroke="var(--blue)" stroke-width="1.3" stroke-linecap="round"/></svg></div><div><div class="tp-b-title">Joint go-to-market</div><div class="tp-b-desc">Work directly with the Incode partnerships team to build pipeline and close deals together.</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- BOTTOM CTA -->
+<div class="bottom-cta">
+  <div class="bc-inner">
+    <div class="bc-grid">
+      <div class="bc-card">
+        <div class="bc-icon"><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="var(--blue)" stroke-width="1.4"/><path d="M10 6v4l3 3" stroke="var(--blue)" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+        <h3>Missing an integration?</h3>
+        <p>Don't see a platform you need? Let us know and we will review it for the roadmap.</p>
+        <button class="btn-bc-p">Request an integration</button>
+      </div>
+      <div class="bc-card">
+        <div class="bc-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M7 8l-4 4 4 4M13 8l4 4-4 4M11 4l-2 12" stroke="var(--blue)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Build with the Incode API</h3>
+        <p>Access full documentation, SDKs, and sandbox environments to build your own integration with the Incode platform.</p>
+        <button class="btn-bc-p" style="background:transparent;color:rgba(255,255,255,.6);border:1.5px solid rgba(255,255,255,.15);">View developer docs</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const activeCats = new Set();
+let searchQ = '';
+
+function syncSearch(val) {
+  searchQ = val.toLowerCase().trim();
+  document.getElementById('hero-search').value = val;
+  document.getElementById('grid-search').value = val;
+  if (val) document.getElementById('marketplace').scrollIntoView({behavior:'smooth'});
+  applyFilters();
+}
+
+function toggleFilter(cat, btn) {
+  if (cat === 'all') {
+    activeCats.clear();
+    document.querySelectorAll('#filters .f-btn').forEach(b => {
+      b.classList.remove('f-all-on');
+      b.style.background = '';
+      b.style.color = '';
+      b.style.borderColor = '';
+    });
+    btn.classList.add('f-all-on');
+  } else {
+    document.querySelector('#filters [data-tcat="all"]').classList.remove('f-all-on');
+    if (activeCats.has(cat)) {
+      activeCats.delete(cat);
+      btn.style.background = '';
+      btn.style.color = '';
+      btn.style.borderColor = '';
+    } else {
+      activeCats.add(cat);
+      btn.style.background = btn.dataset.bg;
+      btn.style.color = btn.dataset.txt;
+      btn.style.borderColor = btn.dataset.bdr;
+    }
+    if (activeCats.size === 0) {
+      document.querySelector('#filters [data-tcat="all"]').classList.add('f-all-on');
+    }
+  }
+  applyFilters();
+}
+
+function applyFilters() {
+  let visible = 0;
+  document.querySelectorAll('.icard[data-tcat]').forEach(card => {
+    const cardCats = card.dataset.tcat.split(' ');
+    const catMatch = activeCats.size === 0 || cardCats.some(c => activeCats.has(c));
+    const nameMatch = searchQ === '' || card.dataset.name.includes(searchQ);
+    const show = catMatch && nameMatch;
+    card.classList.toggle('i-hidden', !show);
+    if (show) visible++;
+  });
+  document.getElementById('no-results').style.display = visible === 0 ? 'block' : 'none';
+  document.getElementById('count').textContent = visible;
+}
+</script>
+</body>
+</html>
