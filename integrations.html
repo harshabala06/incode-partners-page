@@ -75,6 +75,7 @@ body{font-family:var(--f);background:var(--w);color:var(--ink);-webkit-font-smoo
 .icard-logo{height:26px;display:flex;align-items:center;}
 .icard-logo img{max-height:20px;max-width:80px;object-fit:contain;object-position:left;}
 .icard-name{font-size:13px;font-weight:700;color:var(--ink);}
+.icard-desc{font-size:11px;color:var(--muted);line-height:1.55;}
 .no-results{text-align:center;padding:64px 0;color:var(--muted);font-size:14px;display:none;grid-column:1/-1;}
 
 /* COLLECTIONS STRIP */
@@ -323,134 +324,158 @@ body{font-family:var(--f);background:var(--w);color:var(--ink);-webkit-font-smoo
       <div class="icard" data-tcat="IAM" data-name="okta workforce">
         <div class="icard-top"><div class="imono" style="background:#00297A">OK</div><div class="icard-tags"><span class="cat-tag" style="background:#EBF2FF;color:#1A4BAA;">IAM</span></div></div>
         <div class="icard-name">Okta Workforce</div>
+        <div class="icard-desc">Step-up biometric verification and account recovery in Okta workflows.</div>
       </div>
 
       <div class="icard" data-tcat="IAM" data-name="microsoft entra">
         <div class="icard-top"><div class="imono" style="background:#0078D4">ME</div><div class="icard-tags"><span class="cat-tag" style="background:#EBF2FF;color:#1A4BAA;">IAM</span></div></div>
         <div class="icard-name">Microsoft Entra</div>
+        <div class="icard-desc">Biometric verification to provide additional protection at provisioning, MFA recovery, and privileged access.</div>
       </div>
 
       <div class="icard" data-tcat="IAM" data-name="microsoft active directory">
         <div class="icard-top"><div class="imono" style="background:#0078D4">AD</div><div class="icard-tags"><span class="cat-tag" style="background:#EBF2FF;color:#1A4BAA;">IAM</span></div></div>
         <div class="icard-name">Microsoft Active Directory</div>
+        <div class="icard-desc">Incode biometric verification integrated into Active Directory workflows — protecting account recovery and privileged access.</div>
       </div>
 
       <div class="icard" data-tcat="IAM" data-name="openiam">
         <div class="icard-top"><div class="imono" style="background:#1A73E8">OI</div><div class="icard-tags"><span class="cat-tag" style="background:#EBF2FF;color:#1A4BAA;">IAM</span></div></div>
         <div class="icard-name">OpenIAM</div>
+        <div class="icard-desc">IAM platform with Incode verification integrated into onboarding and access workflows.</div>
       </div>
 
       <!-- CIAM -->
       <div class="icard" data-tcat="CIAM" data-name="auth0">
         <div class="icard-top"><div class="imono" style="background:#EB5424">A0</div><div class="icard-tags"><span class="cat-tag" style="background:#E6F1FB;color:#0C447C;">CIAM</span></div></div>
         <div class="icard-name">Auth0</div>
+        <div class="icard-desc">Incode IDV as step-up verification inside Auth0 consumer authentication flows.</div>
       </div>
 
       <div class="icard" data-tcat="CIAM" data-name="descope">
         <div class="icard-top"><div class="imono" style="background:#3D5AF1">DS</div><div class="icard-tags"><span class="cat-tag" style="background:#E6F1FB;color:#0C447C;">CIAM</span></div></div>
         <div class="icard-name">Descope</div>
+        <div class="icard-desc">No-code auth platform with Incode verification built in for customer-facing applications.</div>
       </div>
 
       <!-- IAM + CIAM -->
       <div class="icard" data-tcat="IAM CIAM" data-name="ping davinci">
         <div class="icard-top"><div class="imono" style="background:#ED2226">PI</div><div class="icard-tags"><span class="cat-tag" style="background:#EBF2FF;color:#1A4BAA;">IAM</span><span class="cat-tag" style="background:#E6F1FB;color:#0C447C;">CIAM</span></div></div>
         <div class="icard-name">Ping DaVinci</div>
+        <div class="icard-desc">Incode IDV in PingOne DaVinci orchestration for workforce and consumer identity use cases.</div>
       </div>
 
       <!-- IGA -->
       <div class="icard" data-tcat="IGA" data-name="sailpoint">
         <div class="icard-top"><div class="imono" style="background:#0033A0">SP</div><div class="icard-tags"><span class="cat-tag" style="background:#EEEDFE;color:#3C3489;">IGA</span></div></div>
         <div class="icard-name">SailPoint</div>
+        <div class="icard-desc">Incode biometric verification integrated into SailPoint identity governance workflows for access certification and high-assurance provisioning.</div>
       </div>
 
       <!-- ITDR -->
       <div class="icard" data-tcat="ITDR" data-name="microsoft defender">
         <div class="icard-top"><div class="imono" style="background:#0078D4">MD</div><div class="icard-tags"><span class="cat-tag" style="background:#E6F1FB;color:#0C447C;">ITDR</span></div></div>
         <div class="icard-name">Microsoft Defender</div>
+        <div class="icard-desc">Logic Apps connector — triggers Incode verification when Defender detects anomalous account activity.</div>
       </div>
 
       <!-- ITSM -->
       <div class="icard" data-tcat="ITSM" data-name="servicenow">
         <div class="icard-top"><div class="imono" style="background:#62D84E;color:#111">SN</div><div class="icard-tags"><span class="cat-tag" style="background:#E1F5EE;color:#085041;">ITSM</span></div></div>
         <div class="icard-name">ServiceNow</div>
+        <div class="icard-desc">Incode in ServiceNow IT workflows — protecting password resets, MFA recovery, and high-risk actions from impersonation.</div>
       </div>
 
       <div class="icard" data-tcat="ITSM" data-name="jira service management">
         <div class="icard-top"><div class="imono" style="background:#0052CC">JR</div><div class="icard-tags"><span class="cat-tag" style="background:#E1F5EE;color:#085041;">ITSM</span></div></div>
         <div class="icard-name">Jira Service Management</div>
+        <div class="icard-desc">Incode IDV in Jira Service Management for help desk use cases. Available on Atlassian Marketplace.</div>
       </div>
 
       <!-- Messaging -->
       <div class="icard" data-tcat="Messaging" data-name="slack">
         <div class="icard-top"><div class="imono" style="background:#4A154B">SL</div><div class="icard-tags"><span class="cat-tag" style="background:#EEEDFE;color:#3C3489;">Messaging</span></div></div>
         <div class="icard-name">Slack</div>
+        <div class="icard-desc">Identity verification triggered and completed inside Slack. Listed on Slack App Directory.</div>
       </div>
 
       <!-- Video Conferencing -->
       <div class="icard" data-tcat="Video Conferencing" data-name="zoom">
         <div class="icard-top"><div class="imono" style="background:#2D8CFF">ZM</div><div class="icard-tags"><span class="cat-tag" style="background:#F1EFE8;color:#444441;">Video Conferencing</span></div></div>
         <div class="icard-name">Zoom</div>
+        <div class="icard-desc">Identity verification as a gating step before participants join a Zoom meeting or webinar.</div>
       </div>
 
       <div class="icard" data-tcat="Video Conferencing" data-name="microsoft teams">
         <div class="icard-top"><div class="imono" style="background:#464EB8">MT</div><div class="icard-tags"><span class="cat-tag" style="background:#F1EFE8;color:#444441;">Video Conferencing</span></div></div>
         <div class="icard-name">Microsoft Teams</div>
+        <div class="icard-desc">Identity verification as a gating step before participants join a Teams meeting.</div>
       </div>
 
       <div class="icard" data-tcat="Video Conferencing" data-name="google meet">
         <div class="icard-top"><div class="imono" style="background:#00897B">GM</div><div class="icard-tags"><span class="cat-tag" style="background:#F1EFE8;color:#444441;">Video Conferencing</span></div></div>
         <div class="icard-name">Google Meet</div>
+        <div class="icard-desc">Identity verification gating for Google Meet — confirming participant identity before a meeting begins.</div>
       </div>
 
       <!-- HRIS + ATS -->
       <div class="icard" data-tcat="HRIS ATS" data-name="workday">
         <div class="icard-top"><div class="imono" style="background:#F4762A">WD</div><div class="icard-tags"><span class="cat-tag" style="background:#FAEEDA;color:#633806;">HRIS</span><span class="cat-tag" style="background:#FFF8EB;color:#92400E;">ATS</span></div></div>
         <div class="icard-name">Workday</div>
+        <div class="icard-desc">Incode connected to the Workday employee lifecycle — confirming every new hire before access is granted.</div>
       </div>
 
       <!-- ATS -->
       <div class="icard" data-tcat="ATS" data-name="greenhouse">
         <div class="icard-top"><div class="imono" style="background:#3AB549">GH</div><div class="icard-tags"><span class="cat-tag" style="background:#FFF8EB;color:#92400E;">ATS</span></div></div>
         <div class="icard-name">Greenhouse</div>
+        <div class="icard-desc">Candidate identity verification — confirming the person who joins is the same person who interviewed.</div>
       </div>
 
       <div class="icard" data-tcat="ATS" data-name="lever">
         <div class="icard-top"><div class="imono" style="background:#499D6A">LV</div><div class="icard-tags"><span class="cat-tag" style="background:#FFF8EB;color:#92400E;">ATS</span></div></div>
         <div class="icard-name">Lever</div>
+        <div class="icard-desc">Candidate identity verification inside Lever — confirming the person who joins is the same person who interviewed.</div>
       </div>
 
       <div class="icard" data-tcat="ATS" data-name="ashby">
         <div class="icard-top"><div class="imono" style="background:#1A1A1A">AB</div><div class="icard-tags"><span class="cat-tag" style="background:#FFF8EB;color:#92400E;">ATS</span></div></div>
         <div class="icard-name">Ashby</div>
+        <div class="icard-desc">Candidate identity verification inside Ashby for high-growth recruiting teams.</div>
       </div>
 
       <!-- CRM -->
       <div class="icard" data-tcat="CRM" data-name="salesforce">
         <div class="icard-top"><div class="imono" style="background:#00A1E0">SF</div><div class="icard-tags"><span class="cat-tag" style="background:#EAF3DE;color:#27500A;">CRM</span></div></div>
         <div class="icard-name">Salesforce</div>
+        <div class="icard-desc">Incode identity verification in Salesforce service and CRM workflows for customer identity assurance.</div>
       </div>
 
       <!-- E-Commerce -->
       <div class="icard" data-tcat="E-Commerce" data-name="shopify">
         <div class="icard-top"><div class="imono" style="background:#96BF48;color:#111">SH</div><div class="icard-tags"><span class="cat-tag" style="background:#EDFAF3;color:#166534;">E-Commerce</span></div></div>
         <div class="icard-name">Shopify</div>
+        <div class="icard-desc">Age-gated commerce — verifying buyer identity and age at checkout for regulated products.</div>
       </div>
 
       <!-- Age Verification -->
       <div class="icard" data-tcat="Age Verification" data-name="k-id">
         <div class="icard-top"><div class="imono" style="background:#6C47FF">KI</div><div class="icard-tags"><span class="cat-tag" style="background:#FAECE7;color:#712B13;">Age Verification</span></div></div>
         <div class="icard-name">K-ID</div>
+        <div class="icard-desc">Privacy-first age verification platform powered by Incode for digital platforms and apps.</div>
       </div>
 
       <!-- Hardware -->
       <div class="icard" data-tcat="Hardware" data-name="desko">
         <div class="icard-top"><div class="imono" style="background:#333">DE</div><div class="icard-tags"><span class="cat-tag" style="background:#F1EFE8;color:#444441;">Hardware</span></div></div>
         <div class="icard-name">Desko</div>
+        <div class="icard-desc">Document scanning hardware integrated with Incode for in-person identity verification.</div>
       </div>
 
       <div class="icard" data-tcat="Hardware" data-name="epson">
         <div class="icard-top"><div class="imono" style="background:#003087">EP</div><div class="icard-tags"><span class="cat-tag" style="background:#F1EFE8;color:#444441;">Hardware</span></div></div>
         <div class="icard-name">Epson</div>
+        <div class="icard-desc">Hardware integration enabling Incode at in-person kiosk and point-of-service deployments.</div>
       </div>
 
       <div class="no-results" id="no-results">No integrations match your search or filters.</div>
@@ -470,9 +495,8 @@ body{font-family:var(--f);background:var(--w);color:var(--ink);-webkit-font-smoo
     </div>
     <div class="tp-benefits">
       <div class="tp-benefit"><div class="tp-b-icon"><svg viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="var(--blue)" stroke-width="1.3"/><path d="M6 9l2 2 4-4" stroke="var(--blue)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div class="tp-b-title">Marketplace listing</div><div class="tp-b-desc">Get discovered by Incode's enterprise customer base across every industry we serve.</div></div></div>
-      <div class="tp-benefit"><div class="tp-b-icon"><svg viewBox="0 0 18 18" fill="none"><path d="M9 2l2 5h5l-4 3 1.5 5L9 12l-4.5 3L6 10 2 7h5z" stroke="var(--blue)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div class="tp-b-title">Co-marketing support</div><div class="tp-b-desc">Joint press releases, case studies, and demand generation campaigns to your shared audience.</div></div></div>
+      <div class="tp-benefit"><div class="tp-b-icon"><svg viewBox="0 0 18 18" fill="none"><path d="M9 2l2 5h5l-4 3 1.5 5L9 12l-4.5 3L6 10 2 7h5z" stroke="var(--blue)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div class="tp-b-title">Co-marketing & joint GTM</div><div class="tp-b-desc">Joint press releases, case studies, demand generation, and a dedicated partnerships team to help you build pipeline and close deals together.</div></div></div>
       <div class="tp-benefit"><div class="tp-b-icon"><svg viewBox="0 0 18 18" fill="none"><rect x="2" y="3" width="14" height="12" rx="2" stroke="var(--blue)" stroke-width="1.3"/><path d="M6 7h6M6 10h4" stroke="var(--blue)" stroke-width="1.3" stroke-linecap="round"/></svg></div><div><div class="tp-b-title">Technical enablement</div><div class="tp-b-desc">Sandbox access, integration documentation, and dedicated support to help you build and ship faster.</div></div></div>
-      <div class="tp-benefit"><div class="tp-b-icon"><svg viewBox="0 0 18 18" fill="none"><path d="M3 9c0-3.3 2.7-6 6-6s6 2.7 6 6-2.7 6-6 6" stroke="var(--blue)" stroke-width="1.3" stroke-linecap="round"/><path d="M9 6v3l2 2" stroke="var(--blue)" stroke-width="1.3" stroke-linecap="round"/></svg></div><div><div class="tp-b-title">Joint go-to-market</div><div class="tp-b-desc">Work directly with the Incode partnerships team to build pipeline and close deals together.</div></div></div>
     </div>
   </div>
 </div>
@@ -510,31 +534,21 @@ function syncSearch(val) {
 }
 
 function toggleFilter(cat, btn) {
+  // Reset all buttons first
+  document.querySelectorAll('#filters .f-btn').forEach(b => {
+    b.classList.remove('f-all-on');
+    b.style.background = '';
+    b.style.color = '';
+    b.style.borderColor = '';
+  });
+  activeCats.clear();
   if (cat === 'all') {
-    activeCats.clear();
-    document.querySelectorAll('#filters .f-btn').forEach(b => {
-      b.classList.remove('f-all-on');
-      b.style.background = '';
-      b.style.color = '';
-      b.style.borderColor = '';
-    });
     btn.classList.add('f-all-on');
   } else {
-    document.querySelector('#filters [data-tcat="all"]').classList.remove('f-all-on');
-    if (activeCats.has(cat)) {
-      activeCats.delete(cat);
-      btn.style.background = '';
-      btn.style.color = '';
-      btn.style.borderColor = '';
-    } else {
-      activeCats.add(cat);
-      btn.style.background = btn.dataset.bg;
-      btn.style.color = btn.dataset.txt;
-      btn.style.borderColor = btn.dataset.bdr;
-    }
-    if (activeCats.size === 0) {
-      document.querySelector('#filters [data-tcat="all"]').classList.add('f-all-on');
-    }
+    activeCats.add(cat);
+    btn.style.background = btn.dataset.bg;
+    btn.style.color = btn.dataset.txt;
+    btn.style.borderColor = btn.dataset.bdr;
   }
   applyFilters();
 }
